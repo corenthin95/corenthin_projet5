@@ -1,0 +1,17 @@
+{
+    "name": "coren/corenthin_projet5",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Corenthin FLAMAND",
+            "email": "corenthin.flamand@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
