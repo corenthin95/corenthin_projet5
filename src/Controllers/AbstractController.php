@@ -17,8 +17,8 @@ abstract class AbstractController
     private function  configureTwig()
     {
         $loader = new FilesystemLoader(__DIR__.'/../../templates');
-        if (!$this->twig instanceof Environnement) {
-            $this->twig = new Environnement($loader);
+        if (!$this->twig instanceof Environment) {
+            $this->twig = new Environment($loader);
         }
     }
 
