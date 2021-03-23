@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use Twig\Loader\FilesystemLoader;
-use Twig\Environnement;
+use Twig\Environment;
 
 abstract class AbstractController
 {
@@ -16,7 +16,7 @@ abstract class AbstractController
 
     private function  configureTwig()
     {
-        $loader = new FilesystemLoader(__DIR__.'/../../templates');
+        $loader = new FilesystemLoader(__DIR__ . '/../../templates');
         if (!$this->twig instanceof Environment) {
             $this->twig = new Environment($loader);
         }

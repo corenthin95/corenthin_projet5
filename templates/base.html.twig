@@ -24,7 +24,7 @@
     <!-- Navbar -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">Blog // Corenthin FLAMAND</a>
+            <a class="navbar-brand" href="?page=home">Blog // Corenthin FLAMAND</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -53,6 +53,8 @@
     {% block content %}
     {% endblock %}
 
+    
+
     <!-- Footer -->
     <footer>
         <div class="container-fluid" id="footer-padding">
@@ -76,6 +78,14 @@
     </footer>
 
     <!-- JavaScript Bundle with Popper -->
+    <script>
+        document.getElementById('showpassword').addEventListener('click', (e) => {
+            e.preventDefault();
+            const input = document.getElementById('password');
+            input.type = input.type === 'password' ? 'text' : 'password';
+            e.target.innerText = e.target.innerText === 'Voir' ? 'Cacher' : 'Voir';
+        })
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
 </body>
