@@ -204,6 +204,10 @@ footer h3 {
     font-size: 5rem;
 }
 
+.card {
+    margin-bottom: 4%;
+}
+
 /* ------Login Page------ */
 
 #login-page {

@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block head %}<title>Blog Professionnel - Connexion</title>{% endblock %}
+
+{% block content %}
+<div id="login-page">
+    <header>
+        <div class="container">
+            <h1>Connexion</h1>
+        </div>
+    </header>
+    <section>
+        <div id="login-structure">   
+            <form class="container" id="login-form">
+                <div class="row mb-3">
+                    <label for="exampleInputEmail1" class="form-label">E-mail</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="row mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+                    <input type="password" name="password" class="form-control" placeholder="Entrer le mot de passe" id="password">
+                    <button id="showpassword" type="button">Voir</button>
+                </div>
+                <div class="row mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Se souvenir du mot de passe</label>
+                </div>
+                <div class="row" id="login-button-row">
+                    <button type="submit" class="btn btn-primary" id="login-button">Se connecter</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        document.getElementById('showpassword').addEventListener('click', (e) => {
+            e.preventDefault();
+            const input = document.getElementById('password');
+            input.type = input.type === 'password' ? 'text' : 'password';
+            e.target.innerText = e.target.innerText === 'Voir' ? 'Cacher' : 'Voir';
+        })
+    </script>
+{% endblock %}

@@ -7,6 +7,7 @@ use Twig\Extra\String\StringExtension;
 // Routing
 $page = 'home';
 $page = 'articles';
+$page = 'login';
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
 }
@@ -35,6 +36,9 @@ switch ($page) {
         break;
     case 'articles':
         echo $twig->render('articles/listArticles.html.twig', ['articles' => articles()]);
+        break;
+    case 'login':
+        echo $twig->render('login.html.twig');
         break;
     default:
         header('HTTP/1.0 404 Not found');
