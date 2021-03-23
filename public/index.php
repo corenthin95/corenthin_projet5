@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use Twig\Extra\String\StringExtension;
+
 // Routing
 $page = 'home';
 $page = 'articles';
@@ -23,13 +25,16 @@ $loader = new Twig\Loader\FilesystemLoader(__DIR__ . '/../templates');
 $twig = new Twig\Environment($loader, [
     'cache' => false, __DIR__ . '/tmp'
 ]);
+$twig->addExtension(new StringExtension());
+
+
 
 switch ($page) {
     case 'home':
         echo $twig->render('home.html.twig');
         break;
     case 'articles':
-        echo $twig->render('articles/articles.html.twig', ['articles' => articles()]);
+        echo $twig->render('articles/listArticles.html.twig', ['articles' => articles()]);
         break;
     default:
         header('HTTP/1.0 404 Not found');

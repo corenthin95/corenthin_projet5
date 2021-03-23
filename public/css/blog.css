@@ -193,6 +193,17 @@ footer h3 {
     font-size: 0.9rem;
 }
 
+/* ------Articles Page------ */
+
+#articles {
+    padding: 6% 0 6% 0;
+}
+
+#articles h2 {
+    text-align: center;
+    font-size: 5rem;
+}
+
 /* ------Login Page------ */
 
 #login-page {

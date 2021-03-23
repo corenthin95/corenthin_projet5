@@ -7,12 +7,11 @@ namespace App\config;
  * 
  * @return PDO
  */
-function getPdo(): PDO
+function getPdo()
 {
-    $pdo = new PDO('mysql:host=localhost;dbname=corenthin_projet5_database;charset=utf8', 'root', '', [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
+    $pdo = new PDO('mysql:dbname=corenthin_projet5;host=localhost', 'root', '');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
     return $pdo;
 }
