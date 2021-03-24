@@ -9,6 +9,7 @@ use App\Controllers\DefaultController;
 $page = 'home';
 $page = 'articles';
 $page = 'login';
+$page = 'register';
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
 }
@@ -41,6 +42,9 @@ switch ($page) {
         break;
     case 'login':
         echo $twig->render('login.html.twig');
+        break;
+    case 'register':
+        echo $twig->render('register.html.twig');
         break;
     default:
         header('HTTP/1.0 404 Not found');
