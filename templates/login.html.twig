@@ -5,7 +5,7 @@
 {% block head %}<title>Blog Professionnel - Connexion</title>{% endblock %}
 
 {% block content %}
-    <div id="login-page">
+    <div id="base-form-page">
         <header>
             <div class="container">
                 <h1>Connexion</h1>
@@ -13,8 +13,8 @@
         </header>
         <section>
             <div id="login-structure">   
-                <form class="container" id="login-form">
-                    <div class="row mb-3">
+                <form class="container">
+                    <!-- <div class="row mb-3">
                         <label for="exampleInputEmail1" class="form-label">E-mail</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@mail.com">
                     </div>
@@ -22,13 +22,17 @@
                         <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
                         <input type="password" name="password" class="form-control" placeholder="Entrer le mot de passe" id="password">
                         <button type="button" class="btn btn-primary" id="showpassword">Voir</button>
-                    </div>
+                    </div> -->
+                    
+                    {{ form.input('mail', 'Identifiant', email, {type: 'email'}) }}
+                    {{ form.inputPassword('password', 'Mot de passe', password) }}
+
                     <div class="row mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Se souvenir du mot de passe</label>
                     </div>
-                    <div class="row" id="login-button-row">
-                        <button type="submit" class="btn btn-primary" id="login-button">Se connecter</button>
+                    <div class="row" id="base-form-button-row">
+                        <button type="submit" class="btn btn-primary" id="base-form-button">Se connecter</button>
                     </div>
                 </form>
             </div>

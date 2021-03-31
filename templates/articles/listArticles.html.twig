@@ -8,7 +8,11 @@
     <div class="container-fluid" id="articles">
         <h2>Les derniers articles</h2>
     </div>
+
     <div class="container">
+        <button type="submit" class="btn btn-primary" id="contact-button">
+            <a href="?page=addArticles">Ajouter un article</a>
+        </button>
         <div class="row">
             {% for article in articles %}
                 <div class="col-6">

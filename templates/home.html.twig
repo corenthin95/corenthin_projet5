@@ -4,6 +4,8 @@
     <title>Blog Professionnel - Accueil</title>
 {% endblock %}
 
+{% import 'form.html.twig' as form %}
+
 {% block content %}
 
     <!-- Header -->
@@ -61,18 +63,11 @@
                 <h2 id="section-name-contact">Contact</h2>
             </div>
             <form id="contact-form">
-                <div class="row mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Nom / Prénom</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="row mb-3">
-                    <label for="exampleInputEmail1" class="form-label">E-mail</label>
-                    <input type="email" class="form-control" aria-describedby="emailHelp">
-                </div>
-                <div class="row mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Votre message</label>
-                    <textarea type="text" class="form-control" aria-describedby="emailHelp"></textarea>
-                </div>
+
+                {{ form.input('name', 'Nom / Prénom', name) }}
+                {{ form.input('name', 'E-mail', email, {type: 'email'}) }}
+                {{ form.textarea('name', 'Message') }}
+
                 <div class="row">
                     <button type="submit" class="btn btn-primary" id="contact-button">Envoyer</button>
                 </div>

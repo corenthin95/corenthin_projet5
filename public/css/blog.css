@@ -208,14 +208,66 @@ footer h3 {
     margin-bottom: 4%;
 }
 
-/* ------Login Page------ */
+/* ------Login / Register / Add Articles / Edit Articles Pages ------ */
 
-#login-page {
+#base-form-page {
     background-image: linear-gradient(rgb(255, 255, 255), rgb(241, 241, 241), rgb(241, 241, 241), rgb(255, 255, 255));
 }
 
 #login-structure {
     margin: 0 40% 0 40%;
+}
+
+#register-structure {
+    padding-bottom: 10%;
+    margin: 0 30% 0 30%;
+}
+
+#articles-edit-structure {
+    padding-bottom: 5%;
+    margin: 0 25% 0 25%;
+}
+
+#articles-edit-structure #base-form-button {
+    margin-top: 2%;
+    width: 20%;
+    background-color: rgba(218, 218, 218, 0.85);
+    border: 0;
+    border-radius: 0;
+    color: #3b3b3b;
+}
+
+#articles-edit-structure #base-form-button:hover {
+    background-color: rgba(119, 119, 119, 0.85);
+    border: 0;
+    border-radius: 0;
+    color: #ffffff;
+}
+
+#articles-edit-structure #base-form-button-row {
+    display: flex;
+    justify-content: center;
+}
+
+#register-structure #base-form-button {
+    margin-top: 2%;
+    width: 20%;
+    background-color: rgba(218, 218, 218, 0.85);
+    border: 0;
+    border-radius: 0;
+    color: #3b3b3b;
+}
+
+#register-structure #base-form-button:hover {
+    background-color: rgba(119, 119, 119, 0.85);
+    border: 0;
+    border-radius: 0;
+    color: #ffffff;
+}
+
+#register-structure #base-form-button-row {
+    display: flex;
+    justify-content: center; 
 }
 
 #row-password-show {
@@ -239,12 +291,12 @@ footer h3 {
     color: #ffffff;
 }
 
-#login-structure #login-button-row {
+#login-structure #base-form-button-row {
     display: flex;
     justify-content: center; 
 }
 
-#login-structure #login-button {
+#login-structure #base-form-button {
     width: 40%;
     background-color: rgba(218, 218, 218, 0.85);
     border: 0;
@@ -252,7 +304,7 @@ footer h3 {
     color: #3b3b3b;
 }
 
-#login-structure #login-button:hover {
+#login-structure #base-form-button:hover {
     background-color: rgba(119, 119, 119, 0.85);
     border: 0;
     border-radius: 0;

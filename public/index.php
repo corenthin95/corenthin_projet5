@@ -10,6 +10,7 @@ $page = 'home';
 $page = 'articles';
 $page = 'login';
 $page = 'register';
+$page = 'addArticles';
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
 }
@@ -45,6 +46,9 @@ switch ($page) {
         break;
     case 'register':
         echo $twig->render('register.html.twig');
+        break;
+    case 'addArticles':
+        echo $twig->render('articles/addArticles.html.twig');
         break;
     default:
         header('HTTP/1.0 404 Not found');
