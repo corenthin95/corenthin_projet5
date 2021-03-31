@@ -3,7 +3,11 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Twig\Extra\String\StringExtension;
-use App\Controllers\DefaultController;
+
+
+$app = new App\Controllers\App();
+$response = $app->run(\GuzzleHttp\Psr7\ServerRequest::fromGlobals());
+
 
 // Routing
 $page = 'home';
