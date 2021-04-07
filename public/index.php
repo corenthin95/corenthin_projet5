@@ -6,18 +6,13 @@ use Twig\Extra\String\StringExtension;
 
 
 $app = new App\Controllers\App();
-$response = $app->run(\GuzzleHttp\Psr7\ServerRequest::fromGlobals());
 
+/* $response = $app->run(\GuzzleHttp\Psr7\ServerRequest::fromGlobals());
 
-// Routing
-$page = 'home';
-$page = 'articles';
-$page = 'login';
-$page = 'register';
-$page = 'addArticles';
-if (isset($_GET['page'])) {
-    $page = $_GET['page'];
-}
+$responseHttp = new App\Controllers\Application\Http\ResponseHttpObject();
+
+echo $responseHttp->send(); */
+
 
 // Return content from database
 function articles() {
@@ -37,6 +32,15 @@ $twig = new Twig\Environment($loader, [
 $twig->addExtension(new StringExtension());
 
 
+// Routing
+$page = 'home';
+$page = 'articles';
+$page = 'login';
+$page = 'register';
+$page = 'addArticles';
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+}
 
 switch ($page) {
     case 'home':

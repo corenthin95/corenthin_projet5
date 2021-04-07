@@ -65,8 +65,8 @@
             <form id="contact-form">
 
                 {{ form.input('name', 'Nom / Prénom', name) }}
-                {{ form.input('name', 'E-mail', email, {type: 'email'}) }}
-                {{ form.textarea('name', 'Message') }}
+                {{ form.input('mail', 'E-mail', email, {type: 'email'}) }}
+                {{ form.textarea('message', 'Message') }}
 
                 <div class="row">
                     <button type="submit" class="btn btn-primary" id="contact-button">Envoyer</button>
