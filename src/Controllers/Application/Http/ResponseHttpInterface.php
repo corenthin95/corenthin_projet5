@@ -8,5 +8,5 @@ use Psr\Http\Message\StreamInterface;
 
 interface ResponseHttpInterface
 {
-    public function send(): PumpStream|Stream|StreamInterface|null;
+    public function send();
 }

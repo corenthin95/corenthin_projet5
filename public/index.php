@@ -2,10 +2,20 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use GuzzleHttp\Psr7\ServerRequest;
 use Twig\Extra\String\StringExtension;
 
+$renderer = new App\Models\Renderer();
+$renderer->addPath(dirname(__DIR__) . '/' . '/views');
 
-$app = new App\Controllers\App();
+
+$app = new App\Router\App([
+    App\Blog\BlogModule::class
+], [
+  'renderer' => $renderer
+]);
+$response = $app->run(ServerRequest::fromGlobals());
+echo $response->getBody();
 
 /* $response = $app->run(\GuzzleHttp\Psr7\ServerRequest::fromGlobals());
 
@@ -32,34 +42,36 @@ $twig = new Twig\Environment($loader, [
 $twig->addExtension(new StringExtension());
 
 
-// Routing
-$page = 'home';
-$page = 'articles';
-$page = 'login';
-$page = 'register';
-$page = 'addArticles';
-if (isset($_GET['page'])) {
-    $page = $_GET['page'];
-}
 
-switch ($page) {
-    case 'home':
-        echo $twig->render('home.html.twig');
-        break;
-    case 'articles':
-        echo $twig->render('articles/listArticles.html.twig', ['articles' => articles()]);
-        break;
-    case 'login':
-        echo $twig->render('login.html.twig');
-        break;
-    case 'register':
-        echo $twig->render('register.html.twig');
-        break;
-    case 'addArticles':
-        echo $twig->render('articles/addArticles.html.twig');
-        break;
-    default:
-        header('HTTP/1.0 404 Not found');
-        echo $twig->render('404.html.twig');
-        break;
-}
+// Routing
+//$page = 'home';
+//$page = 'articles';
+//$page = 'login';
+//$page = 'register';
+//$page = 'addArticles';
+//if (isset($_GET['page'])) {
+   // $page = $_GET['page'];
+//} 
+
+
+//switch ($page) {
+ //   case 'home':
+   //     echo $twig->render('home.html.twig');
+    //    break;
+    //case 'articles':
+      //  echo $twig->render('articles/listArticles.html.twig', ['articles' => articles()]);
+        //break;
+    //case 'login':
+      //  echo $twig->render('login.html.twig');
+        //break;
+    //case 'register':
+      //  echo $twig->render('register.html.twig');
+       // break;
+    //case 'addArticles':
+      //  echo $twig->render('articles/addArticles.html.twig');
+        //break;
+    //default:
+      //  header('HTTP/1.0 404 Not found');
+       // echo $twig->render('404.html.twig');
+        //break;
+//}

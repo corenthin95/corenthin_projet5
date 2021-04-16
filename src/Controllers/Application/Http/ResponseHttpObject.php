@@ -25,7 +25,7 @@ class ResponseHttpObject implements ResponseHttpInterface
         $this->additionalHeaders = $additionalHeaders;
         
     }
-    public function send(): PumpStream|Stream|StreamInterface|null
+    public function send()
     {
         $response = new Response(
             $this->statusCode,
