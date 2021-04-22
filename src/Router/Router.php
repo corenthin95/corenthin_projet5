@@ -16,7 +16,12 @@ class Router {
         $this->router = new FastRouteRouter();
     }
 
-    public function get(string $path, callable $callable, string $name)
+    /**
+     * @param string $path
+     * @param string|callable $callable
+     * @param string $name
+     */
+    public function get(string $path, $callable, string $name)
     {
         $this->router->addRoute(new RouterRoute($path, $callable, ['GET'], $name));
     }

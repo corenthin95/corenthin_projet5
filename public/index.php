@@ -2,26 +2,27 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use DI\ContainerBuilder;
 use GuzzleHttp\Psr7\ServerRequest;
-use Twig\Extra\String\StringExtension;
 
-$renderer = new App\Models\Renderer();
-$renderer->addPath(dirname(__DIR__) . '/' . '/views');
+$modules = [
+  App\Blog\BlogModule::class
+];
 
+$builder = new ContainerBuilder();
+$builder->addDefinitions(dirname(__DIR__) . '/config/config.php');
+foreach ($modules as $module) {
+  if ($module::DEFINITIONS) {
+    $builder->addDefinitions($module::DEFINITIONS);
+  }
+}
+$builder->addDefinitions(dirname(__DIR__) . '/config.php');
+$container = $builder->build();
 
-$app = new App\Router\App([
-    App\Blog\BlogModule::class
-], [
-  'renderer' => $renderer
-]);
+$app = new App\Router\App($container, $modules);
+
 $response = $app->run(ServerRequest::fromGlobals());
 echo $response->getBody();
-
-/* $response = $app->run(\GuzzleHttp\Psr7\ServerRequest::fromGlobals());
-
-$responseHttp = new App\Controllers\Application\Http\ResponseHttpObject();
-
-echo $responseHttp->send(); */
 
 
 // Return content from database
@@ -30,17 +31,26 @@ function articles() {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
     $articles = $pdo->query('SELECT * FROM article ORDER BY id DESC');
-    return $articles;
+    return $articles;  
 }
 
+
+
+
+
+
+
+
+
 // Rendering template
+/*
 $loader = new Twig\Loader\FilesystemLoader(__DIR__ . '/../templates');
 $twig = new Twig\Environment($loader, [
     'cache' => false, __DIR__ . '/tmp'
 ]);
 
 $twig->addExtension(new StringExtension());
-
+*/
 
 
 // Routing

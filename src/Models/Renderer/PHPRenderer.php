@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Renderer;
 
-class Renderer
+class PHPRenderer implements RendererInterface
 {
 
     const DEFAULT_NAMESPACE = '__MAIN';
@@ -13,13 +13,20 @@ class Renderer
      * @var array
      */
     private $globals = [];
+
+    public function __construct(?string $defaultPath = null)
+    {
+        if (!is_null($defaultPath)) {
+            $this->addPath($defaultPath);
+        }
+    }
     
     /**
      * Permit to add a path for your views
      * @param string $namespace
      * @param null|string $path
      */
-    public function addPath(string $namespace, ?string $path = null)
+    public function addPath(string $namespace, ?string $path = null): void
     {
         if (is_null($path)) {
             $this->paths[self::DEFAULT_NAMESPACE] = $namespace;
