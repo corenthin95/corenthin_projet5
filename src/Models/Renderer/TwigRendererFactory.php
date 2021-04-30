@@ -2,7 +2,6 @@
 
 namespace App\Models\Renderer;
 
-use App\Router\RouterTwigExtension;
 use Psr\Container\ContainerInterface;
 
 class TwigRendererFactory
@@ -12,8 +11,8 @@ class TwigRendererFactory
         $viewPath = $container->get('views.path');
         $loader = new \Twig\Loader\FilesystemLoader($viewPath);
         $twig = new \Twig\Environment($loader);
-        if ($container->has('twig.extension')) {
-            foreach ($container->get('twig.extension') as $extension) {
+        if ($container->has('twig.extensions')) {
+            foreach ($container->get('twig.extensions') as $extension) {
                 $twig->addExtension($extension);
             }
         }

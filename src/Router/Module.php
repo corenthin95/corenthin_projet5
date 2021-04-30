@@ -2,7 +2,7 @@
 
 namespace App\Router;
 
-class Module{
-
+class Module
+{
     const DEFINITIONS = null;
 }

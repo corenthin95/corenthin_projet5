@@ -12,11 +12,12 @@ class RouterTwigExtension extends AbstractExtension
      */
     private $router;
 
+    
     public function __construct(Router $router)
     {
         $this->router = $router;
     }
-
+    
     public function getFunctions()
     {
         return [

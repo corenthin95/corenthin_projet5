@@ -36,8 +36,8 @@ class App
         }
     }
 
-    public function run(ServerRequestInterface $request): ResponseInterface {
-
+    public function run(ServerRequestInterface $request): ResponseInterface 
+    {
         $uri = $request->getUri()->getPath();
         if (!empty($uri) && $uri[-1] === "/") {
             return (new Response())
@@ -70,4 +70,11 @@ class App
         }
     }
     
+    /**
+     * @return ContainerInterface
+     */
+    public function getContainer(): ContainerInterface
+    {
+        return $this->container;
+    }
 }

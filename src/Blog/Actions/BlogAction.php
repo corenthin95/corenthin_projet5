@@ -21,10 +21,9 @@ class BlogAction
     {
         $slug = $request->getAttribute('slug');
         if ($slug) {
-            return $this->home($slug);
-        } else {
-            return $this->index();
+            return $this->show($slug);
         }
+        return $this->index();
     }
 
     public function index(): string
@@ -32,9 +31,9 @@ class BlogAction
         return $this->renderer->render('@blog/index');
     }
 
-    public function home(string $slug): string
+    public function show(string $slug): string
     {
-        return $this->renderer->render('@blog/home', [
+        return $this->renderer->render('@blog/show', [
             'slug' => $slug
         ]);
     }

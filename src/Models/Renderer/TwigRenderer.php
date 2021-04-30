@@ -15,7 +15,7 @@ class TwigRenderer implements RendererInterface
     {
         $this->loader = $loader;
         $this->twig = $twig;
-        $this->twig->addExtension(new StringExtension());
+        //$this->twig->addExtension(new StringExtension());
     }
     /**
      * Permit to add a path for your views
@@ -30,13 +30,15 @@ class TwigRenderer implements RendererInterface
     /**
      * Permit to render a view
      * The path can be specifed with namespaces added with addPath()
+     * $this->render('@blog/view');
+     * $this->render('view');
      * @param string $view
      * @param array $params
      * @return string
      */
     public function render(string $view, array $params = []): string
     {
-        return $this->twig->render($view . 'html.twig', $params);
+        return $this->twig->render($view . '.twig', $params);
     }
 
     /**

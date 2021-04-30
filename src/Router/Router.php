@@ -3,9 +3,9 @@
 namespace App\Router;
 
 use App\Router\Route;
-use Mezzio\Router\FastRouteRouter;
 use Psr\Http\Message\ServerRequestInterface;
-use Mezzio\Router\Route as RouterRoute;
+use Zend\Expressive\Router\FastRouteRouter;
+use Zend\Expressive\Router\Route as ZendRoute;
 
 class Router {
 
@@ -23,7 +23,7 @@ class Router {
      */
     public function get(string $path, $callable, string $name)
     {
-        $this->router->addRoute(new RouterRoute($path, $callable, ['GET'], $name));
+        $this->router->addRoute(new ZendRoute($path, $callable, ['GET'], $name));
     }
 
     public function match(ServerRequestInterface $request): ?Route
@@ -31,8 +31,8 @@ class Router {
         $result = $this->router->match($request);
         if ($result->isSuccess()) {
             return new Route(
-                $result->getMatchedRoute(),
                 $result->getMatchedRouteName(),
+                $result->getMatchedMiddleware(),
                 $result->getMatchedParams()
             );
         }

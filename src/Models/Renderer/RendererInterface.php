@@ -15,6 +15,8 @@ interface RendererInterface
     /**
      * Permit to render a view
      * The path can be specifed with namespaces added with addPath()
+     * $this->render('@blog/view');
+     * $this->render('view');
      * @param string $view
      * @param array $params
      * @return string

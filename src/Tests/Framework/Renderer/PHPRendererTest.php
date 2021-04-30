@@ -9,7 +9,7 @@ class RendererTest extends TestCase
 {
     private $renderer;
 
-    public function setUp(): void
+    public function setUp()
     {
         $this->renderer = new Renderer(__DIR__ . '/views');
     }

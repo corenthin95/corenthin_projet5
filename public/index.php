@@ -2,14 +2,13 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use DI\ContainerBuilder;
 use GuzzleHttp\Psr7\ServerRequest;
 
 $modules = [
-  App\Blog\BlogModule::class
+  \App\Blog\BlogModule::class
 ];
 
-$builder = new ContainerBuilder();
+$builder = new \DI\ContainerBuilder();
 $builder->addDefinitions(dirname(__DIR__) . '/config/config.php');
 foreach ($modules as $module) {
   if ($module::DEFINITIONS) {
@@ -26,13 +25,13 @@ echo $response->getBody();
 
 
 // Return content from database
-function articles() {
-    $pdo = new PDO('mysql:dbname=corenthin_projet5;host=localhost', 'root', '');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-    $articles = $pdo->query('SELECT * FROM article ORDER BY id DESC');
-    return $articles;  
-}
+// function articles() {
+//     $pdo = new PDO('mysql:dbname=corenthin_projet5;host=localhost', 'root', '');
+//     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+//     $articles = $pdo->query('SELECT * FROM article ORDER BY id DESC');
+//     return $articles;  
+// }
 
 
 
