@@ -1,41 +1,37 @@
 <?php
 
-namespace App\Controllers\Application\Http;
+namespace App\Application\Http;
 
 use GuzzleHttp\Psr7\PumpStream;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Stream;
 use Psr\Http\Message\StreamInterface;
 
-class ResponseHttpObject implements ResponseHttpInterface
+class ResponseHttp implements ResponseHttpInterface
 {
-    protected string $data;
+    protected string $datas;
 
     protected int $statusCode;
 
-    protected array $additionalHeaders;
-
-    public function __construct(
-        string $datas,
-        int $statusCode = 200,
-        array $additionalHeaders = []
-    ){
+    protected array $additionnalHeaders;
+    
+    public function __construct(string $datas, int $statusCode = 200, array $additionnalHeaders = [])
+    {
         $this->datas = $datas;
         $this->statusCode = $statusCode;
-        $this->additionalHeaders = $additionalHeaders;
-        
+        $this->additionnalHeaders = $additionnalHeaders;
     }
+
     public function send()
     {
         $response = new Response(
             $this->statusCode,
             array_merge(
                 ['Content-Type' => 'text/html'],
-                $this->additionalHeaders
+                $this->additionnalHeaders
             ),
             $this->datas
         );
-
         return $response->getBody();
     }
 }

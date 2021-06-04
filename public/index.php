@@ -2,45 +2,53 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use DI\ContainerBuilder;
-use GuzzleHttp\Psr7\ServerRequest;
+use App\Application;
+use App\Application\Http;
 
-$modules = [
-  App\Blog\BlogModule::class
-];
+session_start();
 
-$builder = new ContainerBuilder();
-$builder->addDefinitions(dirname(__DIR__) . '/config/config.php');
-foreach ($modules as $module) {
-  if ($module::DEFINITIONS) {
-    $builder->addDefinitions($module::DEFINITIONS);
-  }
-}
-$builder->addDefinitions(dirname(__DIR__) . '/config.php');
-$container = $builder->build();
+$request = Request::fromGlobals();
+$application = new Application();
 
-$app = new App\Router\App($container, $modules);
+echo $application->run($request);
 
-$response = $app->run(ServerRequest::fromGlobals());
-echo $response->getBody();
+
+
+
+
+
+// use DI\ContainerBuilder;
+// use GuzzleHttp\Psr7\ServerRequest;
+
+// $modules = [
+//   App\Blog\BlogModule::class
+// ];
+
+// $builder = new ContainerBuilder();
+// $builder->addDefinitions(dirname(__DIR__) . '/config/config.php');
+// foreach ($modules as $module) {
+//   if ($module::DEFINITIONS) {
+//     $builder->addDefinitions($module::DEFINITIONS);
+//   }
+// }
+// $builder->addDefinitions(dirname(__DIR__) . '/config.php');
+// $container = $builder->build();
+
+// $app = new App\Router\App($container, $modules);
+
+// $response = $app->run(ServerRequest::fromGlobals());
+// echo $response->getBody();
+
 
 
 // Return content from database
-function articles() {
-    $pdo = new PDO('mysql:dbname=corenthin_projet5;host=localhost', 'root', '');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-    $articles = $pdo->query('SELECT * FROM article ORDER BY id DESC');
-    return $articles;  
-}
-
-
-
-
-
-
-
-
+// function articles() {
+//     $pdo = new PDO('mysql:dbname=corenthin_projet5;host=localhost', 'root', '');
+//     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+//     $articles = $pdo->query('SELECT * FROM article ORDER BY id DESC');
+//     return $articles;  
+// }
 
 // Rendering template
 /*

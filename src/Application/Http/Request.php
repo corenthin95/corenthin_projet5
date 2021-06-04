@@ -1,10 +1,9 @@
-<?php 
+<?php
 
-namespace App\Controllers\Application\Http;
+namespace App\Application\Http;
 
 use GuzzleHttp\Psr7\ServerRequest;
 
 class Request extends ServerRequest implements RequestInterface
 {
-
 }

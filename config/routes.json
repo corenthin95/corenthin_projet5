@@ -1,21 +1,38 @@
 [
     {
-        "name": "homepage",
-        "controller": "App\\Controller\\DefaultController",
-        "method": "homepage",
-        "url": "/"
+      "name": "homepage",
+      "path": "/",
+      "_controller": "Amorvan\\Student\\Controllers\\DefaultController",
+      "_method": "homepage",
+      "_methods": ["GET"]
     },
     {
-        "name": "connexion",
-        "controller": "App\\Controller\\SecurityController",
-        "method": "login",
-        "url": "/connexion "
+      "name": "connexion",
+      "path": "/se-connecter",
+      "_controller": "Amorvan\\Student\\Controllers\\SecurityController",
+      "_method": "login",
+      "_methods": ["GET", "POST"]
     },
     {
-        "name": "register",
-        "controller": "App\\Controller\\SecurityController",
-        "method": "register",
-        "url": "/inscription"
+      "name": "registration",
+      "path": "/inscription",
+      "_controller": "Amorvan\\Student\\Controllers\\SecurityController",
+      "_method": "register",
+      "_methods": ["GET", "POST"]
+    },
+    {
+      "name": "edit_student",
+      "path": "/students/{id}/edit",
+      "_controller": "Amorvan\\Student\\Controllers\\StudentController",
+      "_method": "edit",
+      "_methods": ["GET","POST"]
+    },
+    {
+      "name": "list_student",
+      "path": "/students",
+      "_controller": "Amorvan\\Student\\Controllers\\StudentController",
+      "_method": "listStudents",
+      "_methods": ["GET","POST"]
     }
-    
-]
+  ]
+  
