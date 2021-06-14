@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Application;
-use App\Application\Http;
+use App\Application\Http\Request;
 
 session_start();
 
