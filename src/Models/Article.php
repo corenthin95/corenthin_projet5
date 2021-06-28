@@ -10,7 +10,7 @@ class Article
 
     protected string $leadParagraph;
 
-    protected string $context;
+    protected string $content;
 
     protected $lastUpdate;
 
@@ -41,9 +41,9 @@ class Article
     /**
      * @return string
      */
-    public function getContext(): string
+    public function getContent(): string
     {
-        return $this->context;
+        return $this->content;
     }
 
     /**

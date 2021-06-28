@@ -74,7 +74,7 @@ class __TwigTemplate_40ae678e029e5eef0e5dc510142a5df8e27858eab26484e06a51cb2008a
             <div class=\"row\" id=\"articles-row\">
                 <p id=\"infos-articles\">Retrouvez les articles via ce lien</p>
                 <button type=\"button\" class=\"btn btn-light\" data-toggle=\"modal\" data-target=\"#global_modal\" id=\"articles-button\">
-                    <a href=\"?page=articles\">Page des articles</a>
+                    <a href=\"/articles\">Page des articles</a>
                 </button>
             </div>
         </div>
@@ -209,7 +209,7 @@ class __TwigTemplate_40ae678e029e5eef0e5dc510142a5df8e27858eab26484e06a51cb2008a
             <div class=\"row\" id=\"articles-row\">
                 <p id=\"infos-articles\">Retrouvez les articles via ce lien</p>
                 <button type=\"button\" class=\"btn btn-light\" data-toggle=\"modal\" data-target=\"#global_modal\" id=\"articles-button\">
-                    <a href=\"?page=articles\">Page des articles</a>
+                    <a href=\"/articles\">Page des articles</a>
                 </button>
             </div>
         </div>

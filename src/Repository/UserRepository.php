@@ -8,6 +8,8 @@ class UserRepository extends AbstractRepository
     {
         $query = "SELECT * FROM {$this->getTableName()}";
         $statement = $this->database->request($query);
+
+        return $statement->fetchAll(\PDO::FETCH_CLASS, User::class);
     }
 
     protected function getTableName(): string

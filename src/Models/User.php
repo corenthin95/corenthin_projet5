@@ -10,7 +10,7 @@ class User
 
     protected string $name;
 
-    protected string $firstName;
+    protected string $firstname;
 
     protected string $email;
 
@@ -45,9 +45,9 @@ class User
     /**
      * @return string
      */
-    public function getFirstName(): string
+    public function getFirstname(): string
     {
-        return $this->firstName;
+        return $this->firstname;
     }
 
     /**
@@ -59,19 +59,19 @@ class User
     }
 
     /**
-     * @return string
-     */
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
-
-    /**
      * @return bool
      */
     public function isAdmin(): bool
     {
         return $this->isAdmin;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
     }
 }
 

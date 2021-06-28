@@ -62,45 +62,23 @@ class __TwigTemplate_4d0b11e0ad243fdcd3394908f8cb8a2c17b06461adbc37625f8d4b34cf5
 
 </head>
 <body>
-
-    <!-- Navbar -->
-    <nav class=\"navbar sticky-top navbar-expand-lg navbar-light bg-light\">
-        <div class=\"container\">
-            <a class=\"navbar-brand\" href=\"?page=home\">Blog // Corenthin FLAMAND</a>
-            <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
-                <span class=\"navbar-toggler-icon\"></span>
-            </button>
-            <div class=\"collapse navbar-collapse\" id=\"navbarNav\">
-                <ul class=\"navbar-nav\">
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" aria-current=\"page\" href=\"?page=home#presentation\">Présentation</a>
-                    </li>
-                    <li class=\"nav-item\">
-                         <a class=\"nav-link\" href=\"?page=home#contact\">Contact</a>
-                    </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"?page=articles\">Articles</a>
-                    </li>
-                    <li class=\"nav-item\">
-                         <a class=\"nav-link\" href=\"?page=login\">Connexion</a>
-                    </li>
-                    <li class=\"nav-item\">
-                         <a class=\"nav-link\" href=\"?page=register\">Inscription</a>
-                    </li>
-                </ul>
-            </div>
-         </div>
-    </nav>
-
+    <!-- Header -->
     ";
-        // line 53
-        $this->displayBlock('content', $context, $blocks);
-        // line 55
+        // line 24
+        $this->loadTemplate("parts/_header.html.twig", "base.html.twig", 24)->display($context);
+        // line 25
         echo "
+    <!-- BodyContent -->
     ";
-        // line 56
+        // line 27
+        $this->displayBlock('content', $context, $blocks);
+        // line 29
+        echo "
+    <!-- Footer -->
+    ";
+        // line 31
         $this->displayBlock('footer', $context, $blocks);
-        // line 58
+        // line 33
         echo "
     <!-- JavaScript Bundle with Popper -->
     <script>
@@ -124,19 +102,19 @@ class __TwigTemplate_4d0b11e0ad243fdcd3394908f8cb8a2c17b06461adbc37625f8d4b34cf5
         echo " ";
     }
 
-    // line 53
+    // line 27
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
-        // line 54
+        // line 28
         echo "    ";
     }
 
-    // line 56
+    // line 31
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
-        // line 57
+        // line 32
         echo "    ";
     }
 
@@ -145,9 +123,14 @@ class __TwigTemplate_4d0b11e0ad243fdcd3394908f8cb8a2c17b06461adbc37625f8d4b34cf5
         return "base.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  140 => 57,  136 => 56,  132 => 54,  128 => 53,  121 => 8,  104 => 58,  102 => 56,  99 => 55,  97 => 53,  51 => 9,  49 => 8,  40 => 1,);
+        return array (  118 => 32,  114 => 31,  110 => 28,  106 => 27,  99 => 8,  82 => 33,  80 => 31,  76 => 29,  74 => 27,  70 => 25,  68 => 24,  51 => 9,  49 => 8,  40 => 1,);
     }
 
     public function getSourceContext()
@@ -174,39 +157,14 @@ class __TwigTemplate_4d0b11e0ad243fdcd3394908f8cb8a2c17b06461adbc37625f8d4b34cf5
 
 </head>
 <body>
+    <!-- Header -->
+    {% include 'parts/_header.html.twig' %}
 
-    <!-- Navbar -->
-    <nav class=\"navbar sticky-top navbar-expand-lg navbar-light bg-light\">
-        <div class=\"container\">
-            <a class=\"navbar-brand\" href=\"?page=home\">Blog // Corenthin FLAMAND</a>
-            <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
-                <span class=\"navbar-toggler-icon\"></span>
-            </button>
-            <div class=\"collapse navbar-collapse\" id=\"navbarNav\">
-                <ul class=\"navbar-nav\">
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" aria-current=\"page\" href=\"?page=home#presentation\">Présentation</a>
-                    </li>
-                    <li class=\"nav-item\">
-                         <a class=\"nav-link\" href=\"?page=home#contact\">Contact</a>
-                    </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"?page=articles\">Articles</a>
-                    </li>
-                    <li class=\"nav-item\">
-                         <a class=\"nav-link\" href=\"?page=login\">Connexion</a>
-                    </li>
-                    <li class=\"nav-item\">
-                         <a class=\"nav-link\" href=\"?page=register\">Inscription</a>
-                    </li>
-                </ul>
-            </div>
-         </div>
-    </nav>
-
+    <!-- BodyContent -->
     {% block content %}
     {% endblock %}
 
+    <!-- Footer -->
     {% block footer %}
     {% endblock %}
 

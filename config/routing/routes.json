@@ -14,6 +14,13 @@
       "_methods": ["GET", "POST"]
     },
     {
+      "name": "logout",
+      "path": "/se-deconnecter",
+      "_controller": "App\\Controllers\\SecurityController",
+      "_method": "logout",
+      "_methods": ["GET", "POST"]
+    },
+    {
       "name": "registration",
       "path": "/inscription",
       "_controller": "App\\Controllers\\SecurityController",
@@ -21,17 +28,24 @@
       "_methods": ["GET", "POST"]
     },
     {
-      "name": "edit_student",
-      "path": "/students/{id}/edit",
-      "_controller": "App\\Controllers\\StudentController",
+      "name": "index_admin",
+      "path": "/admin",
+      "_controller": "App\\Controllers\\AdminController",
+      "_method": "index",
+      "_methods": ["GET", "POST"]
+    },
+    {
+      "name": "edit_article",
+      "path": "/articles/{id}/edit",
+      "_controller": "App\\Controllers\\ArticleController",
       "_method": "edit",
       "_methods": ["GET","POST"]
     },
     {
-      "name": "list_student",
-      "path": "/students",
-      "_controller": "App\\Controllers\\StudentController",
-      "_method": "listStudents",
+      "name": "list_articles",
+      "path": "/articles",
+      "_controller": "App\\Controllers\\ArticleController",
+      "_method": "listArticles",
       "_methods": ["GET","POST"]
     }
   ]

@@ -5,6 +5,7 @@ namespace App\Application\Templating;
 use App\Application\Http\ResponseHttp;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
+use Twig\Extra\String\StringExtension;
 
 trait TwigTrait
 {
@@ -14,8 +15,10 @@ trait TwigTrait
     {
         $this->configureTwig();
         $response = new ResponseHttp(
-            $this->templating->render($template, $parameters)
+            $this->templating->render($template, $parameters),
         );
+        
+        // $this->twig->addExtension(new StringExtension());
 
         return $response->send();
     }

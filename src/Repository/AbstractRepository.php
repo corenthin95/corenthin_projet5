@@ -12,9 +12,9 @@ abstract class AbstractRepository
     {
         try {
             $this->database = new PDODatabase(
-                'mysql:host=127.0.0.1;dbname=corenthinprojet5;charset=utf8',
-                'corenthinprojet5',
-                'corenthinprojet5',
+                'mysql:host=127.0.0.1;dbname=corenthin_projet5;charset=utf8',
+                'corenthin_projet5',
+                'corenthin_projet5'
             );
         } catch (\Exception $e) {
 
