@@ -4,13 +4,13 @@ namespace App\Models;
 
 class Article
 {
-    protected int $id;
+    protected $id;
 
-    protected string $title;
+    protected $title;
 
-    protected string $leadParagraph;
+    protected $leadParagraph;
 
-    protected string $content;
+    protected $content;
 
     protected $lastUpdate;
 
@@ -33,7 +33,7 @@ class Article
     /**
      * @return string
      */
-    public function getLeadParagraph(): string
+    public function getLeadParagraph(): ?string
     {
         return $this->leadParagraph;
     }

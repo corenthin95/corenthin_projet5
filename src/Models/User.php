@@ -4,19 +4,19 @@ namespace App\Models;
 
 class User
 {
-    protected int $id;
+    protected $id;
 
-    protected string $pseudo;
+    protected $pseudo;
 
-    protected string $name;
+    protected $name;
 
-    protected string $firstname;
+    protected $firstname;
 
-    protected string $email;
+    protected $email;
 
-    protected bool $isAdmin;
+    protected $isAdmin;
 
-    protected string $password;
+    protected $password;
 
     /**
     * @return int

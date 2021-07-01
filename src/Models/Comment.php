@@ -4,13 +4,13 @@ namespace App\Models;
 
 class Comment
 {
-    protected int $id;
+    protected $id;
 
-    protected string $content;
+    protected $content;
 
     protected $date;
 
-    protected bool $isValid;
+    protected $isValid;
 
     /**
      * @return int

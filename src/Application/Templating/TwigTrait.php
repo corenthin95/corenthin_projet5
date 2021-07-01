@@ -9,16 +9,17 @@ use Twig\Extra\String\StringExtension;
 
 trait TwigTrait
 {
-    protected Environment $templating;
+    protected $templating;
 
     public function renderHtml(string $template, array $parameters=[])
     {
+
         $this->configureTwig();
         $response = new ResponseHttp(
             $this->templating->render($template, $parameters),
         );
         
-        // $this->twig->addExtension(new StringExtension());
+        
 
         return $response->send();
     }
@@ -29,10 +30,11 @@ trait TwigTrait
         $this->templating = new Environment(
             $loader,
             [
-                'cache' => __DIR__.'/../../../var/cache/twig',
+                // 'cache' => __DIR__.'/../../../var/cache/twig',
                 'debug' => true
             ]
             );
+            $this->templating->addExtension(new StringExtension());
             $this->templating->addGlobal('session', $_SESSION);
     }
 }

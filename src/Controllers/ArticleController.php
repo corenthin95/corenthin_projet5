@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 
 class ArticleController extends AbstractController
 {
-    protected ArticleRepository $articleRepository;
+    protected $articleRepository;
 
     public function __construct()
     {
