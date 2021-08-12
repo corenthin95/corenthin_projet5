@@ -47,6 +47,13 @@
       "_controller": "App\\Controllers\\ArticleController",
       "_method": "listArticles",
       "_methods": ["GET","POST"]
+    },
+    {
+      "name": "show_articles",
+      "path": "/articles/{id}/show",
+      "_controller": "App\\Controllers\\ArticleController",
+      "_method": "show",
+      "_methods": ["GET","POST"]
     }
   ]
   

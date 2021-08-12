@@ -1,8 +1,8 @@
 {% extends "base.html.twig" %}
 
-{# {% block head %}
+{% block head %}
     <title>Blog Professionnel - Articles</title>
-{% endblock %} #}
+{% endblock %}
 
 {% block content %}
     <div class="container-fluid" id="articles">
@@ -22,7 +22,7 @@
                             <h5 class="card-title">{{ article.title }}</h4>
                             <h6 class="card-subtitle mb-2 text-muted">{{ article.leadParagraph }}</h5>
                             <p class="card-text">{{ article.content | u.truncate(100, '...', false)}}</p>
-                            <a href="#">Voir la suite</a>
+                            <a href={{ "/articles/"~article.id~"/show" }}>Voir la suite</a>
                         </div>
                         <div class="card-footer"><small class="text-muted">{{ article.lastUpdate | date("d/m/Y H:i") }}</small></div>
                     </div>
