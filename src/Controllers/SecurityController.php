@@ -33,7 +33,7 @@ class SecurityController extends AbstractController
                 // Retrive user from database
                 $user = $this->userRepository->findByEmail($datasSubmitted['email']);
                 // Check if submitted password is identical from database
-                if (!$user || !password_verify($datasSubmitted['password'], $user['password'])) {
+                if (!$user || $datasSubmitted['password'] !== $user['password']) {
                     // If KO Show error message
                     $errors[]= 'Identifiants invalides.';
                 } else {
