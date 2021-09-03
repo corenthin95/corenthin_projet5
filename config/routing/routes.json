@@ -31,7 +31,7 @@
       "name": "index_admin",
       "path": "/admin",
       "_controller": "App\\Controllers\\AdminController",
-      "_method": "index",
+      "_method": "indexAdmin",
       "_methods": ["GET", "POST"]
     },
     {

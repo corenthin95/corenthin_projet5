@@ -10,6 +10,16 @@ body {
     justify-content: flex-end;
 }
 
+/* ------Admin Page------ */
+
+#admin-page {
+    padding-top: 3%; 
+}
+
+#admin-page #myTabContent {
+    padding: 2%;
+}
+
 /* ------Home Page------ */
 
 #introduction {
