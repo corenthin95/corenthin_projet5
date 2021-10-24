@@ -7,46 +7,74 @@
 {% block content %}
     <section id="admin-page">
         <div class="container">
-            <button type="submit" class="btn btn-primary" id="contact-button">
-                <a href="/addArticles">Ajouter un article</a>
-            </button>
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Manage Articles</button>
-                </li>
-                <li class="nav-item">
-                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
-                </li>
-                <li class="nav-item">
-                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-            {% for article in articles %}
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ article.title }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ article.leadParagraph }}</h6>
-                        <p class="card-text">{{ article.content | u.truncate(100, '...', false)}}</p>
-                        <a href={{ "/articles/"~article.id~"/show" }}>Voir la suite</a>
-                    </div>
-                    <div class="card-footer"><small class="text-muted">{{ article.lastUpdate | date("d/m/Y H:i") }}</small></div>
+
+            <br>
+
+            <div>
+                <a href="/add-article" class="btn btn-secondary" role="button">Add an article</a>
+            </div>
+            
+            <br>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td><strong>Title Articles</strong></td>
+                        <td>Actions</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for article in articles %}
+                    <tr>
+                        <td>{{ article.title }}</td>
+                        <td>
+                            <a href={{ "/articles/"~article.id~"/edit" }} class="btn btn-primary">Edit</a>
+                            <a href={{ "/articles/"~article.id~"/delete" }} class="btn btn-danger" type="submit">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <br>
+            <br>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td><strong>Title Comments</strong></td>
+                        <td>Actions</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for comment in comments %}
+                    <tr>
+                        <td>{{ comment.content | u.truncate(20, '...', false)}}</td>
+                        <td><a href={{ "/articles/"~article.id~"/edit" }} class="btn btn-primary">Edit</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {# {% for article in articles %}
+
+            
+                <div>
+                    <h5>{{ article.title }}</h5>
+                    <h6>{{ article.lead_paragraph }}</h6>
+                </div>
+                <div>
+                    <a href ={{ "/articles/"~article.id~"/edit" }} class="btn btn-primary" role="button">Edit</a>
+                    <button type="submit" class="btn btn-danger">Delete</button>
                 </div>
             {% endfor %}
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    Ad pariatur nostrud pariatur exercitation ipsum ipsum culpa mollit commodo mollit ex. 
-                    Aute sunt incididunt amet commodo est sint nisi deserunt pariatur do.
-                    Aliquip ex eiusmod voluptate exercitation cillum id incididunt elit sunt.
-                    Qui minim sit magna Lorem id et dolore velit Lorem amet exercitation duis deserunt. 
-                    Anim id labore elit adipisicing ut in id occaecat pariatur ut ullamco ea tempor duis.
+            {% for comment in comments %}
+                <div>
+                    <h5>{{ comment.content }}</h5>
                 </div>
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                    Est quis nulla laborum officia ad nisi ex nostrud culpa Lorem excepteur aliquip dolor aliqua irure ex.
-                    Nulla ut duis ipsum nisi elit fugiat commodo sunt reprehenderit laborum veniam eu veniam.
-                    Eiusmod minim exercitation fugiat irure ex labore incididunt do fugiat commodo aliquip sit id deserunt reprehenderit aliquip nostrud.
-                    Amet ex cupidatat excepteur aute veniam incididunt mollit cupidatat esse irure officia elit do ipsum ullamco Lorem.
+                <div>
+                    <button type="submit" class="btn btn-success">Validate</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
                 </div>
-            </div>
+            {% endfor %} #}
         </div>
     </section>
 {% endblock %}

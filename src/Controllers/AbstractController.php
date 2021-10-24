@@ -12,4 +12,18 @@ abstract class AbstractController
     {
         
     }
+    
+    public function getUser()
+    {
+        if(array_key_exists('user', $_SESSION)) {
+            return $_SESSION['user'];
+        }
+
+        return null;
+    }
+
+    public function redirect($url)
+    {
+        header('Location: '. $url);
+    }
 }

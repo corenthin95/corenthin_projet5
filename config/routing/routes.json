@@ -37,8 +37,8 @@
     {
       "name": "edit_article",
       "path": "/articles/{id}/edit",
-      "_controller": "App\\Controllers\\ArticleController",
-      "_method": "edit",
+      "_controller": "App\\Controllers\\AdminController",
+      "_method": "editArticle",
       "_methods": ["GET","POST"]
     },
     {
@@ -54,6 +54,21 @@
       "_controller": "App\\Controllers\\ArticleController",
       "_method": "show",
       "_methods": ["GET","POST"]
-    }
+    },
+    {
+    "name": "add_articles",
+    "path": "/add-article",
+    "_controller": "App\\Controllers\\AdminController",
+    "_method": "createArticle",
+    "_methods": ["GET","POST"]
+    },
+    {
+      "name": "delete_articles",
+      "path": "/articles/{id}/delete",
+      "_controller": "App\\Controllers\\AdminController",
+      "_method": "deleteArticle",
+      "_methods": ["GET","POST"]
+      }
+
   ]
   
