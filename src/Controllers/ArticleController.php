@@ -55,13 +55,12 @@ class ArticleController extends AbstractController
         $id = $bag->getParameter('id')->getValue();
         $errors = null;
         $article = $this->articleRepository->findById($id);
+        $comments = $this->commentRepository->findCommentsByArticleWithUserInformations($id);
 
         if (!$article) {
             throw new ResourceNotFoundException('Article non existant');
         }
 
-        $comments = $this->commentRepository->findCommentsByArticleWithUserInformations($id);
-        
         if($request->getMethod() === 'POST') { 
             
             $dataSubmitted = $request->getParsedBody();
