@@ -200,39 +200,35 @@ footer h3 {
 
 /* ------Articles Page------ */
 
-#articles {
+#list-articles {
     padding: 6% 0 6% 0;
 }
 
-#articles h2 {
+#list-articles h2 {
     text-align: center;
     font-size: 5rem;
 }
 
-.card {
+#card-list-articles {
     margin-bottom: 4%;
 }
 
-.card-text {
+#card-text-list-articles {
     font-size: 1rem;
 }
 
-.card-body #articles-button {
+#card-body-list-articles #articles-button {
     background-color: rgba(223, 223, 223, 0.85);
     border: 0;
     border-radius: 0;
 }
 
-.card-body #articles-button:hover {
+#card-body-list-articles #articles-button:hover {
     background-color: rgba(177, 177, 177, 0.85);
 }
 /* ------Show Articles Page------ */
 
 /* ------Edit / Create Articles Page------ */
-
-form #button-manage-articles {
-    padding: 5%;
-}
 
 /* ------Login / Register------ */
 

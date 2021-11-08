@@ -7,7 +7,6 @@ use App\Application\Http\RedirectResponseHttp;
 use Psr\Http\Message\ServerRequestInterface;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
-use DateTime;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 
 class AdminController extends AbstractController
@@ -61,7 +60,6 @@ class AdminController extends AbstractController
                     $this->articleRepository->createArticle($dataSubmitted, $user);
                 // TODO: redirection
                     $this->redirect('/articles');
-
                 } else {
                     // TODO: champs invalides
                     // TODO: retourner les erreurs a l'user
@@ -91,21 +89,12 @@ class AdminController extends AbstractController
                 // TODO: editing article from database
                 if(strlen($dataSubmitted['title']) > 0 && strlen($dataSubmitted['leadParagraph']) > 0 && strlen($dataSubmitted['content']) > 0) {
                     // TODO: redirection
-                    
-                    try {
-
-                        $this->articleRepository->editArticle($id, $dataSubmitted['title'], $dataSubmitted['leadParagraph'], $dataSubmitted['content']);
-                     
-                    } catch(\Exception $e) {
-                        dump($e);
-                        die();
-                    }
+                    $this->articleRepository->editArticle($id, $dataSubmitted['title'], $dataSubmitted['leadParagraph'], $dataSubmitted['content']);
                     return $this->redirect('/articles/'. $id .'/edit');
                 } else {
                     $errors = 'Tous les champs doivent être remplis';
                 }
             }
-
         //TODO: return rendered page
         return $this->renderHtml(
             'articles/editArticles.html.twig',
@@ -118,14 +107,10 @@ class AdminController extends AbstractController
 
     public function deleteArticle(ServerRequestInterface $request, ParametersBag $bag)
     {
-        
-        // TODO: retrive article
-            //TODO: delete article
-
-                $this->articleRepository->deleteArticle($bag->getParameter('id')->getValue());
-            
-            
-                //TODO: redirection
-                return $this->redirect($request->getServerParams()['HTTP_REFERER']);
+        // TODO: retrive article and delete article
+        $this->articleRepository->deleteArticle($bag->getParameter('id')->getValue());
+    
+        //TODO: redirection
+        return $this->redirect($request->getServerParams()['HTTP_REFERER']);
     }
 }

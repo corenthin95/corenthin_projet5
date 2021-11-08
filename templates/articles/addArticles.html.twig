@@ -1,37 +1,41 @@
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
 
 {% block head %}
-    <title>Blog Professionnel - Ajout d'une article</title>
+    <title>Blog Professionnel - Ajout d'un article</title>
 {% endblock %}
 
-{% import 'form.html.twig' as form %}
-
 {% block content %}
-    <div id="base-form-page">
-        <header>
-            <div class="container">
-                <h1>Ajout d'un article</h1>
-            </div>
-        </header>
-        <section>
-        
-            
-            <div id="articles-edit-structure">   
+
+    <section>
+        <div class="container">
+            <h1>Ajout d'un article</h1>
 
             {% if errors %}
-            <div>{{ errors }}</div>
+                <div>{{ errors }}</div>
             {% endif %}
-            
-                <form class="container" method='POST'>
 
-                    {{ form.input('title', 'Titre de l\'article', title) }}
-                    {{ form.input('leadParagraph', 'Chapô', leadParagraph)}}
-                    {{ form.textarea('content', 'Contenu de l\'article', content) }}
-                    <div id="base-form-button-row">
-                        <button type="submit" class="btn btn-primary" id="base-form-button">Ajout de l'article</button>
+            <form method='POST'>
+                <div class="card">
+                    <h3 class="card-header">Title de l'article</h3>
+                    <div class="card-body">
+                        <input type="text" class="card-text form-control" name="title" id="title" value={{ article.title }}>
                     </div>
-                </form>
-            </div>
-        </section>
-    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-header">Châpo</h3>
+                    <div class="card-body">
+                        <input type="text" class="card-text form-control" name="leadParagraph" id="leadParagraph" value={{ article.lead_paragraph }}>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-header">Contenu de l'article</h3>
+                    <div class="card-body">
+                        <textarea type="text" class="card-text form-control" name="content" id="content" rows="5">{{ article.content }}</textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Ajouter l'article</button>
+            </form>
+        </div>
+    </section>
+    
 {% endblock %}
