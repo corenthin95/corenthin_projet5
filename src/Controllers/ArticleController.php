@@ -84,4 +84,37 @@ class ArticleController extends AbstractController
         );
     }
 
+    public function editComment(ServerRequestInterface $request, ParametersBag $bag)
+    {
+        $errors = null;
+        $id = $bag->getParameter('id')->getValue();
+        $comment = $this->commentRepository->findCommentsByArticleWithUserInformations($id);
+
+        if($request->getMethod() === 'POST') {
+
+            $dataSubmitted = $request->getParsedBody();
+
+            if(strlen($dataSubmitted['content']) > 10) {
+                $this->commentRepository->editComment($id, $dataSubmitted['content']);
+                return $this->redirect('/comments/'. $id .'/edit');
+            } else {
+                $errors = 'Tous les champs doivent être remplis';
+            }
+        }
+
+        return $this->renderHtml(
+            'comments/editComments.html.twig',
+            [
+                'errors' => $errors,
+                'comment' => $comment
+            ]
+        );
+    }
+
+    public function deleteComment(ServerRequestInterface $request, ParametersBag $bag)
+    {
+        $this->commentRepository->deleteComment($bag->getParameter('id')->getValue());
+
+        return $this->redirect($request->getServerParams()['HTTP_REFERER']);
+    }
 }

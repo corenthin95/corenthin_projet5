@@ -7,25 +7,6 @@ use DateTime;
 
 class CommentRepository extends AbstractRepository
 {
-    // public function findByArticleId($id)
-    // {
-    //     $pdoStatement = $this->database->request("SELECT * FROM {$this->getTableName()} WHERE id = :id", [':id' => $id]);
-    //     $pdoStatement = $this->database->request(
-
-    //        "SELECT c.id AS comment_id,
-    //        c.content AS comment_content,
-    //        u.id AS user_id,
-    //        u.pseudo AS user_pseudo
-    //        FROM {$this->getTableName()} AS c
-    //        INNER JOIN user AS u ON c.user_id = u.id
-    //        WHERE c.id = :id", [':id' => $id]
-
-    //     );
-
-    //     return $pdoStatement->fetchAll(\PDO::FETCH_CLASS, Comment::class);        
-    // }
-
-    
     public function findCommentsByArticleWithUserInformations(int $id)
     {
         $pdoStatement = $this->database->request(

@@ -33,6 +33,14 @@
                         <div class="card-body">
                             <p class="card-title">{{ comment.user_pseudo }}</p>
                             <p class="card-text">{{ comment.comment_content }}</p>
+                            {% if session.user %}
+                                <div class="row">
+                                    <div class="col">
+                                        <a href={{ "/comments/"~comment.comment_id~"/edit" }} class="btn btn-primary">Editer</a>
+                                        <a href={{ "/comments/"~comment.comment_id~"/delete"}} class="btn btn-danger" type="submit">Supprimer</a>
+                                    </div>
+                                </div>
+                            {% endif %}
                         </div>
                         <div class="card-footer"><small class="text-muted">{{ comment.comment_date | date("d/m/Y H:i")}}</small></div>
                     </div>

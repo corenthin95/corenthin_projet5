@@ -68,7 +68,21 @@
       "_controller": "App\\Controllers\\AdminController",
       "_method": "deleteArticle",
       "_methods": ["GET","POST"]
-      }
+    },
+    {
+      "name": "edit_comments",
+      "path": "/comments/{id}/edit",
+      "_controller": "App\\Controllers\\ArticleController",
+      "_method": "editComment",
+      "_methods": ["GET","POST"]
+    },
+    {
+      "name": "delete_comments",
+      "path": "/comments/{id}/delete",
+      "_controller": "App\\Controllers\\ArticleController", 
+      "_method": "deleteComment",
+      "_methods": ["GET","POST"]
+    }
 
   ]
   

@@ -22,8 +22,8 @@
                 <tbody>
                     {% for article in articles %}
                     <tr>
-                        <td>{{ article.title }}</td>
-                        <td>
+                        <td class="col-6">{{ article.title }}</td>
+                        <td class="col-6">
                             <a href={{ "/articles/"~article.id~"/edit" }} class="btn btn-primary">Edit</a>
                             <a href={{ "/articles/"~article.id~"/delete" }} class="btn btn-danger" type="submit">Delete</a></td>
                     </tr>
@@ -41,8 +41,11 @@
                 <tbody>
                     {% for comment in comments %}
                     <tr>
-                        <td>{{ comment.content | u.truncate(20, '...', false)}}</td>
-                        <td><a href={{ "/articles/"~article.id~"/edit" }} class="btn btn-primary">Edit</a></td>
+                        <td class="col-6">{{ comment.content | u.truncate(50, '...', false)}}</td>
+                        <td class="col-6">
+                            <a href={{ "/comments/"~comment.comment_id~"/edit" }} class="btn btn-primary">Edit</a>
+                            <a href={{ "/comments/"~comment.comment_id~"/delete"}} class="btn btn-danger" type="submit">Delete</a>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
