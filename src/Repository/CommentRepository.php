@@ -67,7 +67,7 @@ class CommentRepository extends AbstractRepository
 
     public function deleteComment($id)
     {
-        $query = "DELETE FROM comment WHERE id =:id";
+        $query = "DELETE FROM comment WHERE id = :id";
 
         return $this->database->request(
             $query,
@@ -77,9 +77,23 @@ class CommentRepository extends AbstractRepository
         );
     }
 
+    public function validateComment($id)
+    {
+        $query = "UPDATE comment SET is_valid = 1 WHERE id = :id";
+
+        return $this->database->request(
+            $query,
+            [
+                'id' => $id
+            ]
+        );
+    }
+
+
     protected function getTableName(): string
     {
         return 'comment';
     }
+
 
 }

@@ -24,12 +24,6 @@ class AdminController extends AbstractController
 
     public function indexAdmin(ServerRequestInterface $request, ParametersBag $bag)
     {
-        if(!array_key_exists('user', $_SESSION) || (array_key_exists('user', $_SESSION) && $_SESSION['user']['is_admin'] !== '1')) 
-        {
-            $response = new RedirectResponseHttp('/');
-            $response->send();
-        }
-
         $articles = $this->articleRepository->findAll();
         $comments = $this->commentRepository->findAll();
         
@@ -46,6 +40,7 @@ class AdminController extends AbstractController
     public function createArticle(ServerRequestInterface $request, ParametersBag $bag)
     { 
         $errors = null;
+        $this->redirectIfIsNotAdmin();
 
         // TODO: droit seul a l'admin sur la création d'article
         // TODO: vérifier si requete sous POST donc soumission si oui
@@ -79,6 +74,7 @@ class AdminController extends AbstractController
     {
 
         $errors = null;
+        $this->redirectIfIsNotAdmin();
         $id = (int) $bag->getParameter('id')->getValue();
         // TODO: retrive article
         $article = $this->articleRepository->findById($id);
@@ -107,10 +103,55 @@ class AdminController extends AbstractController
 
     public function deleteArticle(ServerRequestInterface $request, ParametersBag $bag)
     {
+        $this->redirectIfIsNotAdmin();
         // TODO: retrive article and delete article
         $this->articleRepository->deleteArticle($bag->getParameter('id')->getValue());
     
         //TODO: redirection
         return $this->redirect($request->getServerParams()['HTTP_REFERER']);
     }
+
+    public function deleteComment(ServerRequestInterface $request, ParametersBag $bag)
+    {
+        $this->redirectIfIsNotAdmin();
+        $this->commentRepository->deleteComment($bag->getParameter('id')->getValue());
+
+        return $this->redirect($request->getServerParams()['HTTP_REFERER']);
+    }
+
+    public function validateComment(ServerRequestInterface $request, ParametersBag $bag)
+    {
+        $this->redirectIfIsNotAdmin();
+
+        $this->commentRepository->validateComment($bag->getParameter('id')->getValue());
+
+        return $this->redirect($request->getServerParams()['HTTP_REFERER']);
+    }
+
+    // public function editComment(ServerRequestInterface $request, ParametersBag $bag)
+    // {
+    //     $errors = null;
+    //     $id = $bag->getParameter('id')->getValue();
+    //     $comment = $this->commentRepository->findCommentsByArticleWithUserInformations($id);
+
+    //     if($request->getMethod() === 'POST') {
+
+    //         $dataSubmitted = $request->getParsedBody();
+
+    //         if(strlen($dataSubmitted['content']) > 10) {
+    //             $this->commentRepository->editComment($id, $dataSubmitted['content']);
+    //             return $this->redirect('/comments/'. $id .'/edit');
+    //         } else {
+    //             $errors = 'Tous les champs doivent être remplis';
+    //         }
+    //     }
+
+    //     return $this->renderHtml(
+    //         'comments/editComments.html.twig',
+    //         [
+    //             'errors' => $errors,
+    //             'comment' => $comment
+    //         ]
+    //     );
+    // }
 }

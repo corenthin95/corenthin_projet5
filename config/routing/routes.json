@@ -70,17 +70,17 @@
       "_methods": ["GET","POST"]
     },
     {
-      "name": "edit_comments",
-      "path": "/comments/{id}/edit",
-      "_controller": "App\\Controllers\\ArticleController",
-      "_method": "editComment",
+      "name": "delete_comments",
+      "path": "/comments/{id}/delete",
+      "_controller": "App\\Controllers\\AdminController", 
+      "_method": "deleteComment",
       "_methods": ["GET","POST"]
     },
     {
-      "name": "delete_comments",
-      "path": "/comments/{id}/delete",
-      "_controller": "App\\Controllers\\ArticleController", 
-      "_method": "deleteComment",
+      "name": "validate_comments",
+      "path": "/comments/{id}/validate",
+      "_controller": "App\\Controllers\\AdminController", 
+      "_method": "validateComment",
       "_methods": ["GET","POST"]
     }
 

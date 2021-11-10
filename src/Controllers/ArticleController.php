@@ -35,21 +35,6 @@ class ArticleController extends AbstractController
         );
     }
 
-    public function edit(ServerRequestInterface $request, ParametersBag $bag)
-    {
-        $article = $this->articleRepository->findById($bag->getParameter('id')->getValue());
-        if (!$article) {
-            throw new ResourceNotFoundException('Article non existant');
-        }
-
-        return $this->renderHtml(
-            'articles/editArticles.html.twig',
-            [
-                'article' => $article
-            ]
-        );
-    }
-
     public function show(ServerRequestInterface $request, ParametersBag $bag)
     {
         $id = $bag->getParameter('id')->getValue();
@@ -84,37 +69,18 @@ class ArticleController extends AbstractController
         );
     }
 
-    public function editComment(ServerRequestInterface $request, ParametersBag $bag)
-    {
-        $errors = null;
-        $id = $bag->getParameter('id')->getValue();
-        $comment = $this->commentRepository->findCommentsByArticleWithUserInformations($id);
+    // public function edit(ServerRequestInterface $request, ParametersBag $bag)
+    // {
+    //     $article = $this->articleRepository->findById($bag->getParameter('id')->getValue());
+    //     if (!$article) {
+    //         throw new ResourceNotFoundException('Article non existant');
+    //     }
 
-        if($request->getMethod() === 'POST') {
-
-            $dataSubmitted = $request->getParsedBody();
-
-            if(strlen($dataSubmitted['content']) > 10) {
-                $this->commentRepository->editComment($id, $dataSubmitted['content']);
-                return $this->redirect('/comments/'. $id .'/edit');
-            } else {
-                $errors = 'Tous les champs doivent être remplis';
-            }
-        }
-
-        return $this->renderHtml(
-            'comments/editComments.html.twig',
-            [
-                'errors' => $errors,
-                'comment' => $comment
-            ]
-        );
-    }
-
-    public function deleteComment(ServerRequestInterface $request, ParametersBag $bag)
-    {
-        $this->commentRepository->deleteComment($bag->getParameter('id')->getValue());
-
-        return $this->redirect($request->getServerParams()['HTTP_REFERER']);
-    }
+    //     return $this->renderHtml(
+    //         'articles/editArticles.html.twig',
+    //         [
+    //             'article' => $article
+    //         ]
+    //     );
+    // }
 }
