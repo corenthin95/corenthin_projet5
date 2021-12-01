@@ -33,17 +33,39 @@ class SecurityController extends AbstractController
                 // Retrive user from database
                 $user = $this->userRepository->findByEmail($datasSubmitted['email']);
                 // Check if submitted password is identical from database
-                if (!$user || $datasSubmitted['password'] !== $user['password']) {
-                    // If KO Show error message
-                    $errors[]= 'Identifiants invalides.';
+                if (password_verify($datasSubmitted['password'], $datasSubmitted['email'], $user)) {
+                    // If KO, show error message
+                    $errors = 'Identifiants invalides.';
                 } else {
-                    // If KO -> Redirect user to homepage and add infos from us in session
+                    // Redirect user to homepage
                     $_SESSION['user'] = $user;
                     $response = new RedirectResponseHttp('/');
                     return $response->send();
                 }
+
+                // if (!$user || $datasSubmitted['password'] !== $user['password']) {
+                    // If KO Show error message
+                    // $errors[]= 'Identifiants invalides.';
+                // } else {
+                    // If KO -> Redirect user to homepage and add infos from us in session
+                //    $_SESSION['user'] = $user;
+                //    $response = new RedirectResponseHttp('/');
+                //    return $response->send();
+                //}
             }
         }
+
+        return $this->renderHtml(
+            'security/login.html.twig',
+            [
+                'errors' => $errors
+            ]
+            );
+    }
+
+    public function registration(ServerRequestInterface $request, ParametersBag $bag)
+    {
+        $errors = [];
 
         return $this->renderHtml(
             'security/login.html.twig',
