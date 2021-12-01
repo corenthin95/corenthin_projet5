@@ -10,11 +10,6 @@ body {
     justify-content: flex-end;
 }
 
-/* ------Admin Page------ */
-
-
-
-
 /* ------Home Page------ */
 
 #introduction {
@@ -237,11 +232,10 @@ footer h3 {
 }
 
 #login-structure {
-    margin: 0 40% 0 40%;
+    margin: 0 40% 15% 40%;
 }
 
 #register-structure {
-    padding-bottom: 10%;
     margin: 0 30% 0 30%;
 }
 
