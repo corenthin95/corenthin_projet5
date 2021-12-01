@@ -24,7 +24,7 @@ class UserRepository extends AbstractRepository
 
     public function createUser(array $dataSubmitted)
     {
-        $query = "INSERT INTO user (pseudo, `name`, firstname, email, `password`) VALUES (:pseudo, `:name`, :firstname, :email, `:password`)";
+        $query = "INSERT INTO user (pseudo, name, firstname, email, password) VALUES (:pseudo, :name, :firstname, :email, :password)";
 
         return $this->database->request(
             $query,

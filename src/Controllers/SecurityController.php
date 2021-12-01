@@ -10,6 +10,7 @@ use Psr\Http\Message\ServerRequestInterface;
 class SecurityController extends AbstractController
 {
     protected $userRepository;
+
     public function __construct()
     {
         $this->userRepository = new UserRepository();
@@ -24,22 +25,19 @@ class SecurityController extends AbstractController
         // $specialChars = preg_match('@[^\w]@', $datasSubmitted);
 
         if ($request->getMethod() === 'POST') {
-            $datasSubmitted = $request->getParsedBody();
-            if (!array_key_exists('csrf_token', $datasSubmitted) ||
-            $datasSubmitted['_csrf_token'] !== $_SESSION['token']
-            ) {
-                $errors[]= 'Jeton CSRF invalide.';
-            } else if (strlen($datasSubmitted['email']) === 0 || strlen($datasSubmitted['password']) === 0) {
-                $errors[] = 'L\'adresse email et le mot de passe doivent être renseigné.';
-            } else if(strlen($datasSubmitted['firstname']) > 0 
-            && strlen($datasSubmitted['name']) > 0
-            && strlen($datasSubmitted['pseudo']) > 0
-            && strlen($datasSubmitted['email'])  > 0
-            && /* !$uppercase || !$lowercase || !$number || !$specialChars ||  */strlen($datasSubmitted['password']) < 8) {
-                $this->userRepository->createUser($datasSubmitted);
+
+            $dataSubmitted = $request->getParsedBody();
+
+            if(strlen($dataSubmitted['pseudo']) > 0 
+            && strlen($dataSubmitted['name']) > 0
+            && strlen($dataSubmitted['firstname']) > 0
+            && strlen($dataSubmitted['email'])  > 0
+            && /* !$uppercase || !$lowercase || !$number || !$specialChars ||  */strlen($dataSubmitted['password']) > 0) {
+
+                password_hash($dataSubmitted['password'], PASSWORD_DEFAULT);
+                $this->userRepository->createUser($dataSubmitted);
                 $this->redirect('/');
-            } else {
-                $errors = 'Tous les champs doivent être remplis.';
+
             }
         }
 
@@ -48,7 +46,7 @@ class SecurityController extends AbstractController
             [
                 'errors' => $errors
             ]
-            );
+        );
     }
 
     public function login(ServerRequestInterface $request, ParametersBag $bag)
@@ -57,19 +55,19 @@ class SecurityController extends AbstractController
 
         if ($request->getMethod() === 'POST') {
             // Retrive submitted datas
-            $datasSubmitted = $request->getParsedBody();
+            $dataSubmitted = $request->getParsedBody();
             // Validate submitted datas
-            if (!array_key_exists('_csrf_token', $datasSubmitted) ||
-            $datasSubmitted['_csrf_token'] !== $_SESSION['token']
+            if (!array_key_exists('_csrf_token', $dataSubmitted) ||
+            $dataSubmitted['_csrf_token'] !== $_SESSION['token']
             ) {
                 $errors[]= 'Jeton CSRF invalide.';
-            } else if (strlen($datasSubmitted['email']) === 0 || strlen($datasSubmitted['password']) === 0) {
+            } else if (strlen($dataSubmitted['email']) === 0 || strlen($dataSubmitted['password']) === 0) {
                 $errors[] = 'L\'adresse email et le mot de passe doivent être renseigné.'; 
             } else {
                 // Retrive user from database
-                $user = $this->userRepository->findByEmail($datasSubmitted['email']);
+                $user = $this->userRepository->findByEmail($dataSubmitted['email']);
                 // Check if submitted password is identical from database
-                if (password_verify($datasSubmitted['password'], $datasSubmitted['email'], $user)) {
+                if (password_verify($dataSubmitted['password'], $dataSubmitted['email'], $user)) {
                     // If KO, show error message
                     $errors = 'Identifiants invalides.';
                 } else {
