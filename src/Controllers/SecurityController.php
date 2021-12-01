@@ -15,6 +15,42 @@ class SecurityController extends AbstractController
         $this->userRepository = new UserRepository();
     }
 
+    public function registration(ServerRequestInterface $request, ParametersBag $bag)
+    {
+        $errors = [];
+        // $uppercase = preg_match('@[A-Z@', $datasSubmitted);
+        // $lowercase = preg_match('@[a-z]@', $datasSubmitted);
+        // $number = preg_match('@[0-9]@', $datasSubmitted);
+        // $specialChars = preg_match('@[^\w]@', $datasSubmitted);
+
+        if ($request->getMethod() === 'POST') {
+            $datasSubmitted = $request->getParsedBody();
+            if (!array_key_exists('csrf_token', $datasSubmitted) ||
+            $datasSubmitted['_csrf_token'] !== $_SESSION['token']
+            ) {
+                $errors[]= 'Jeton CSRF invalide.';
+            } else if (strlen($datasSubmitted['email']) === 0 || strlen($datasSubmitted['password']) === 0) {
+                $errors[] = 'L\'adresse email et le mot de passe doivent être renseigné.';
+            } else if(strlen($datasSubmitted['firstname']) > 0 
+            && strlen($datasSubmitted['name']) > 0
+            && strlen($datasSubmitted['pseudo']) > 0
+            && strlen($datasSubmitted['email'])  > 0
+            && /* !$uppercase || !$lowercase || !$number || !$specialChars ||  */strlen($datasSubmitted['password']) < 8) {
+                $this->userRepository->createUser($datasSubmitted);
+                $this->redirect('/');
+            } else {
+                $errors = 'Tous les champs doivent être remplis.';
+            }
+        }
+
+        return $this->renderHtml(
+            'security/register.html.twig',
+            [
+                'errors' => $errors
+            ]
+            );
+    }
+
     public function login(ServerRequestInterface $request, ParametersBag $bag)
     {
         $errors = [];
@@ -54,18 +90,6 @@ class SecurityController extends AbstractController
                 //}
             }
         }
-
-        return $this->renderHtml(
-            'security/login.html.twig',
-            [
-                'errors' => $errors
-            ]
-            );
-    }
-
-    public function registration(ServerRequestInterface $request, ParametersBag $bag)
-    {
-        $errors = [];
 
         return $this->renderHtml(
             'security/login.html.twig',

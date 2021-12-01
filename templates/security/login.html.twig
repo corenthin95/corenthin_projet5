@@ -23,7 +23,7 @@
                 </ul>
                 {% endif %}
                 <form class="container" method="post">
-                <input type="hidden" name="_csrf_token" id="_csrf_token" value={{ session.token }} />
+                    <input type="hidden" name="_csrf_token" id="_csrf_token" value={{ session.token }} />
                     <!-- <div class="row mb-3">
                         <label for="exampleInputEmail1" class="form-label">E-mail</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@mail.com">
@@ -49,6 +49,3 @@
         </section>
     </div>
 {% endblock %}
-
-<!-- Script Js Show/Hide password -->
-{% include 'parts/_scriptJs.html.twig' %}

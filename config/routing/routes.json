@@ -24,7 +24,7 @@
       "name": "registration",
       "path": "/inscription",
       "_controller": "App\\Controllers\\SecurityController",
-      "_method": "register",
+      "_method": "registration",
       "_methods": ["GET", "POST"]
     },
     {
