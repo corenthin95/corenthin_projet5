@@ -7,28 +7,29 @@
 {% endblock %}
 
 {% block content %}
-    <div id="base-form-page">
-        <header>
-            <div class="container">
-                <h1>Inscription</h1>
-            </div>
-        </header>
-        <section>
-            <div id="register-structure">   
-                <form class="container" method="post">
-                    <input type="hidden" name="_crsf_token" id="_csrf_token" value={{ session.token }} />
-
-                    {{ form.input('pseudo', 'Pseudo', pseudo) }}
-                    {{ form.input('name', 'Nom', name) }}
-                    {{ form.input('firstname', 'Prénom', firstname) }}
-                    {{ form.input('email', 'E-mail', email, {type: 'email'}) }}
-                    {{ form.inputPassword('password', 'Mot de passe', password) }}
-
-                    <div class="row" id="base-form-button-row">
-                        <button type="submit" class="btn btn-primary" id="base-form-button">S'inscrire</button>
-                    </div>
-                </form>
-            </div>
-        </section>
-    </div>
+    <section class="container-fluid" id="base-form-page">
+        <div class="row" id="login-register-title">
+            <h1>Inscription</h1>
+        </div>
+        <div class="container" id="login-register-structure">   
+            <form class="row" method="post">
+                <input type="hidden" name="_crsf_token" id="_csrf_token" value={{ session.token }} />
+                {{ form.input('pseudo', 'Pseudo', pseudo) }}
+                {{ form.input('name', 'Nom', name) }}
+                {{ form.input('firstname', 'Prénom', firstname) }}
+                {{ form.input('email', 'E-mail', email, {type: 'email'}) }}
+                {{ form.inputPassword('password', 'Mot de passe', password) }}
+                <div id="base-form-button-row">
+                    <button type="submit" class="btn btn-primary" id="base-form-button">S'inscrire</button>
+                </div>
+            </form>
+            {% if errors|length > 0 %}
+            <ul>
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </section>
 {% endblock %}

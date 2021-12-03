@@ -2,7 +2,7 @@ body {
     font-family: "Open Sans", sans-serif;
     font-size: 1.25rem;
     font-weight: 300;
-    color: #3b3b3b;
+    color: #3b3b3b; 
 }
 
 #navbarNav {
@@ -147,6 +147,10 @@ body {
     margin: 0 20% 0 20%;
 }
 
+#contact-button-row {
+    margin-top: 1.5%;
+}
+
 #contact-button {
     background-color: rgba(218, 218, 218, 0.85);
     border: 0;
@@ -162,8 +166,11 @@ body {
     color: #ffffff;
 }
 
+/* ------Footer------ */
+
 footer {
     margin-top: 7%;
+    padding-top: 2%;
     background-color:rgba(61, 61, 61, 0.85);
 }
 
@@ -171,26 +178,25 @@ footer h3 {
     color: rgb(255, 255, 255);
 }
 
-#footer-padding {
-    padding-top: 1%;
-}
-
-#footer-padding #footer-title {
-    padding: 0 25% 0 25%;
+#footer-title {
+    margin-bottom: 2%;
+    padding: 1% 25% 0 25%;
     text-align: center;
 }
 
-#footer-padding #footer-title p {
+#footer-title p {
     font-size: 1rem;
     color: white;
 }
 
 #copyright-row {
-    padding-top: 1%;
     background-color: rgb(59, 59, 59);
+    font-size: 0.8rem;
     text-align: center;
     color: white;
-    font-size: 0.9rem;
+    padding-top: 0.8%;
+    position: relative;
+    bottom: 0;
 }
 
 /* ------Articles Page------ */
@@ -210,6 +216,7 @@ footer h3 {
 
 #card-text-list-articles {
     font-size: 1rem;
+    text-align: justify;
 }
 
 #card-body-list-articles #articles-button {
@@ -221,7 +228,45 @@ footer h3 {
 #card-body-list-articles #articles-button:hover {
     background-color: rgba(177, 177, 177, 0.85);
 }
+
 /* ------Show Articles Page------ */
+
+#show-article-comment-title {
+    margin-bottom: 1%;
+}
+
+#card-show-article {
+    margin: 3% 0 4% 0;
+}
+
+#card-show-article .card-text {
+    font-size: 1rem;
+    text-align: justify;
+}
+
+#card-show-article-comment {
+    margin-bottom: 1.5%;
+}
+
+#card-show-article-comment .card-text {
+    font-size: 1rem;
+}
+
+#card-show-article-comment .card-footer {
+    font-size: 1.1rem;
+}
+
+#show-article-button {
+    color: #3b3b3b;
+    background-color: rgba(223, 223, 223, 0.85);
+    border: 0;
+    border-radius: 0;
+    margin-top: 0.5%;
+}
+
+#show-article-button:hover {
+    background-color: rgba(177, 177, 177, 0.85);
+}
 
 /* ------Edit / Create Articles Page------ */
 
@@ -231,37 +276,31 @@ footer h3 {
     background-image: linear-gradient(rgb(255, 255, 255), rgb(241, 241, 241), rgb(241, 241, 241), rgb(255, 255, 255));
 }
 
-#login-structure {
-    margin: 0 40% 15% 40%;
+#login-register-title h1 {
+    font-size: 5.8rem;
+    margin: 7% 0 5% 0;
+    text-align: center;
 }
 
-#register-structure {
-    margin: 0 30% 0 30%;
+#login-register-structure {
+    padding: 0 21% 0 21%;
+    margin-bottom: 10%;
 }
 
-#register-structure #base-form-button {
-    margin-top: 2%;
-    width: 20%;
+#base-form-button {
+    margin-top: 5%;
     background-color: rgba(218, 218, 218, 0.85);
     border: 0;
     border-radius: 0;
     color: #3b3b3b;
+    width: 25%;
 }
 
-#register-structure #base-form-button:hover {
+#base-form-button:hover {
     background-color: rgba(119, 119, 119, 0.85);
     border: 0;
     border-radius: 0;
     color: #ffffff;
-}
-
-#register-structure #base-form-button-row {
-    display: flex;
-    justify-content: center; 
-}
-
-#row-password-show {
-    display: inline-block;
 }
 
 #showpassword {
@@ -269,32 +308,9 @@ footer h3 {
     border: 0;
     border-radius: 0;
     color: #3b3b3b;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
 }
 
 #showpassword:hover {
-    background-color: rgba(119, 119, 119, 0.85);
-    border: 0;
-    border-radius: 0;
-    color: #ffffff;
-}
-
-#login-structure #base-form-button-row {
-    display: flex;
-    justify-content: center; 
-}
-
-#login-structure #base-form-button {
-    width: 40%;
-    background-color: rgba(218, 218, 218, 0.85);
-    border: 0;
-    border-radius: 0;
-    color: #3b3b3b;
-}
-
-#login-structure #base-form-button:hover {
     background-color: rgba(119, 119, 119, 0.85);
     border: 0;
     border-radius: 0;
