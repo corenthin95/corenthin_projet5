@@ -47,19 +47,22 @@ class AdminController extends AbstractController
         if($request->getMethod() === 'POST') {
             // TODO: recuperer les inputs
             $dataSubmitted = $request->getParsedBody();
-            // TODO: validation des inputs (les 3 champs remplis)
-                // TODO: validation des 3 champs
-                if(strlen($dataSubmitted['title']) > 0 && strlen($dataSubmitted['leadParagraph']) > 0 && strlen($dataSubmitted['content']) > 0) {
-                // TODO: création de l'article en base
-                    $user = $this->getUser();
-                    $this->articleRepository->createArticle($dataSubmitted, $user);
-                // TODO: redirection
-                    $this->redirect('/articles');
-                } else {
-                    // TODO: champs invalides
-                    // TODO: retourner les erreurs a l'user
-                    $errors = 'Tous les champs doivent être remplis';
-                }
+            // TODO: CSRF Token + Validation des 3 champs
+            if (!array_key_exists('_csrf_token', $dataSubmitted) ||
+            $dataSubmitted['_csrf_token'] !== $_SESSION['token']
+            ) {
+                $errors[]= 'Jeton CSRF invalide.';
+            } else if(strlen($dataSubmitted['title']) > 0 && strlen($dataSubmitted['leadParagraph']) > 0 && strlen($dataSubmitted['content']) > 0) {
+            // TODO: création de l'article en base
+                $user = $this->getUser();
+                $this->articleRepository->createArticle($dataSubmitted, $user);
+            // TODO: redirection
+                $this->redirect('/articles');
+            } else {
+                // TODO: champs invalides
+                // TODO: retourner les erreurs a l'user
+                $errors = 'Tous les champs doivent être remplis';
+            }
         }
         // TODO: retourner la page
         return $this->renderHtml(
@@ -82,8 +85,12 @@ class AdminController extends AbstractController
             if($request->getMethod() === 'POST') {
                 // TODO: checking and validate required field
                 $dataSubmitted = $request->getParsedBody();
-                // TODO: editing article from database
-                if(strlen($dataSubmitted['title']) > 0 && strlen($dataSubmitted['leadParagraph']) > 0 && strlen($dataSubmitted['content']) > 0) {
+
+                if (!array_key_exists('_csrf_token', $dataSubmitted) ||
+                $dataSubmitted['_csrf_token'] !== $_SESSION['token']
+                ) {
+                    $errors[]= 'Jeton CSRF invalide.';
+                } else if(strlen($dataSubmitted['title']) > 0 && strlen($dataSubmitted['leadParagraph']) > 0 && strlen($dataSubmitted['content']) > 0) {
                     // TODO: redirection
                     $this->articleRepository->editArticle($id, $dataSubmitted['title'], $dataSubmitted['leadParagraph'], $dataSubmitted['content']);
                     return $this->redirect('/articles/'. $id .'/edit');

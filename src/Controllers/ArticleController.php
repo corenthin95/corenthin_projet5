@@ -50,7 +50,11 @@ class ArticleController extends AbstractController
             
             $dataSubmitted = $request->getParsedBody();
 
-            if (strlen($dataSubmitted['content']) > 10) {
+            if (!array_key_exists('_csrf_token', $dataSubmitted) ||
+            $dataSubmitted['_csrf_token'] !== $_SESSION['token']
+            ) {
+                $errors[]= 'Jeton CSRF invalide.';
+            } else if (strlen($dataSubmitted['content']) > 10) {
                 $user = $this->getUser();
                 $this->commentRepository->createComment($dataSubmitted, $user, $id);
                 $this->redirect('/articles/'. $id .'/show');
