@@ -22,7 +22,7 @@ class UserRepository extends AbstractRepository
         return $statement->fetch();
     }
 
-    public function createUser(array $dataSubmitted)
+    public function createUser(array $dataSubmitted, string $hash)
     {
         $query = "INSERT INTO user (pseudo, name, firstname, email, password) VALUES (:pseudo, :name, :firstname, :email, :password)";
 
@@ -33,7 +33,7 @@ class UserRepository extends AbstractRepository
                 ':name' => $dataSubmitted['name'],
                 ':firstname' => $dataSubmitted['firstname'],
                 ':email' => $dataSubmitted['email'],
-                ':password' => $dataSubmitted['password']
+                ':password' => $hash
             ]
         );
     }
