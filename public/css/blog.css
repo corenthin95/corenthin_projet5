@@ -268,7 +268,7 @@ footer h3 {
     background-color: rgba(177, 177, 177, 0.85);
 }
 
-/* ------Edit / Create Articles Page------ */
+/* ------Form Macro------ */
 
 /* ------Login / Register------ */
 
@@ -315,4 +315,199 @@ footer h3 {
     border: 0;
     border-radius: 0;
     color: #ffffff;
+}
+
+/* ------Responsive Page------ */
+
+@media only screen and (max-width: 768px) {
+    body  {
+        font-size: 1rem;
+    }
+
+    #introduction #articles-button {
+        width: 22%;
+    }
+
+    #presentation-row {
+        padding: 0;
+    }
+
+    #presentation #profile-pic {
+        padding: 0;
+    }
+
+    #presentation img {
+        height: 4rem;
+    }
+
+    #presentation #name-presentation #title-name {
+        font-size: 2rem;
+    }
+
+    #presentation-row #description-presentation {
+        font-size: 0.8rem;
+        padding: 0;
+    }
+
+    #presentation #cv-button {
+        width: 15%;
+    }
+
+    #contact-button {
+        width: 23%;
+    }
+
+    footer h3 {
+        font-size: 1.3rem;
+    }
+
+    #base-form-page {
+        padding: 9% 0 9% 0;
+    }
+
+    #base-form-button {
+        width: 35%;
+    }
+
+}
+
+@media only screen and (max-width: 375px) {
+    body {
+        font-size: 0.75rem;
+    }
+
+    #introduction h1 {
+        font-size: 3rem;
+        line-height: 0.6;
+    }
+
+    #introduction h1 span {
+        font-size: 1.75rem;
+    }
+
+    #introduction #articles-button {
+        font-size: 0.8rem;
+        width: 35%;
+    }
+
+    #presentation #section-name-presentation {
+        font-size: 2.5rem;
+    }
+
+    #presentation #name-presentation #title-name {
+        font-size: 2rem;
+        padding-top: 10%;
+        margin: 0;
+    }
+
+    #presentation #cv-download {
+        font-size: 1.1rem;
+    }
+
+    #presentation #cv-download span {
+        font-size: 0.9rem;
+    }
+
+    #presentation #cv-button {
+        font-size: 0.7rem;
+        width: 20%;
+    }
+
+    #contact #section-name-contact {
+        font-size: 2rem;
+    }
+
+    #contact #contact-button {
+        font-size: 0.7rem;
+        width: 36%;
+    }
+
+    footer h3 {
+        font-size: 0.8rem;
+    }
+
+    #footer-title p {
+        font-size: 0.5rem;
+    }
+
+    #copyright-row {
+        font-size: 0.4rem;
+        padding-top: 4%;
+    }
+
+    #base-form-page {
+        padding-top: 12%;
+        padding-bottom: 12%
+    }
+    
+    #login-register-title h1 {
+        font-size: 3rem;
+    }
+
+    #base-form-button {
+        font-size: 0.7rem;
+        width: 49%;
+    }
+
+    #showpassword {
+        font-size: 0.7rem;
+        height: 2.3rem;
+    }
+
+    #list-articles h2 {
+        font-size: 2rem;
+    }
+
+    #card-body-list-articles .card-title {
+        font-size: 1.5rem;
+    }
+    
+    #card-body-list-articles .card-subtitle {
+        font-size: 1rem;
+    }
+
+    #card-body-list-articles .card-text {
+        font-size: 0.75rem;
+    }
+
+    #card-body-list-articles #articles-button {
+        font-size: 0.7rem;
+    }
+
+    #card-show-article .card-title {
+        font-size: 1.5rem;
+    }
+
+    #card-show-article .card-subtitle {
+        font-size: 1rem;
+    }
+
+    #card-show-article .card-text {
+        font-size: 0.75rem;
+    }
+
+    #show-article-comment-title h2 {
+        font-size: 2rem;
+    }
+
+    #card-show-article-comment .card-title {
+        font-size: 1rem;
+    }
+
+    #card-show-article-comment .card-text {
+        font-size: 0.75rem
+    }
+
+    #card-show-article-comment .card-footer {
+        font-size: 0.75rem;
+    }
+
+    #title-enter-comment {
+        font-size: 1.5rem;
+    }
+
+    #show-article-button {
+        font-size: 0.7rem;
+        margin-top: 2%;
+    }
 }

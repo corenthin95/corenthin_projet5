@@ -11,7 +11,7 @@
             <div>{{ errors }}</div>
         {% endif %}
             <div class="row">
-                <div class="col-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="card" id="card-show-article">
                     <img src="/img/php_img.png" class="card-img-top" alt="Php-image">
                         <div class="card-body">
@@ -28,7 +28,7 @@
             </div>
             <div class="row">
                 {% for comment in comments %}
-                <div class="col-12">
+                <div class="col-lg-12 col-md-12 col-12">
                     <div class="card" id="card-show-article-comment">
                         <div class="card-body">
                             <p class="card-title"><strong>{{ comment.user_pseudo }}</strong></p>
@@ -43,7 +43,7 @@
             <form method='POST'>
                 <input type="hidden" name="_csrf_token" id="_csrf_token" value={{ session.token }} />
                 <div class="card">
-                    <h3 class="card-header">Entrer votre commentaire</h3>
+                    <h3 class="card-header" id="title-enter-comment">Entrer votre commentaire</h3>
                     <div class="card-body">
                         <textarea type="text" class="card-text form-control" rows="4" id="content" name="content"></textarea>
                     </div>
