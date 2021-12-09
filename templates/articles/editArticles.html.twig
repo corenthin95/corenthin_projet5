@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    <title>Edition d'un article</title>
+{% endblock %}
+
+{% block content %}
+
+    <section>
+        <div class="container">
+            <h1>Editer l'article : {{ article.title }}</h1>
+
+            {% if errors %}
+                <div>{{ errors }}</div>
+            {% endif %}
+
+            <form method='POST'>
+                <input type="hidden" name="_csrf_token" id="_csrf_token" value={{ session.token }} />
+                <div class="card">
+                    <h3 class="card-header">Title de l'article</h3>
+                    <div class="card-body">
+                        <input type="text" class="card-text form-control" name="title" id="title" value={{ article.title }}>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-header">Châpo</h3>
+                    <div class="card-body">
+                        <input type="text" class="card-text form-control" name="leadParagraph" id="leadParagraph" value={{ article.lead_paragraph }}>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-header">Contenu de l'article</h3>
+                    <div class="card-body">
+                        <textarea type="text" class="card-text form-control" name="content" id="content" rows="5">{{ article.content }}</textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Editer l'article</button>
+            </form>
+        </div>
+    </section>
+
+{% endblock %}

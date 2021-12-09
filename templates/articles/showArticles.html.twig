@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    <title>Blog Professionnel - {{ article.title }}</title>
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container">
+        {% if errors %}
+            <div>{{ errors }}</div>
+        {% endif %}
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="card" id="card-show-article">
+                    <img src="/img/php_img.png" class="card-img-top" alt="Php-image">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ article.title }}</h5>
+                            <h5 class="card-subtitle mb-2 text-muted">{{ article.lead_paragraph }}</h6>
+                            <p class="card-text">{{ article.content }}</p>
+                        </div>
+                        <div class="card-footer"><small class="text-muted">{{ article.lastUpdate | date("d/m/Y H:i") }}</small></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="show-article-comment-title">
+                <h2>Commentaires</h2>
+            </div>
+            <div class="row">
+                {% for comment in comments %}
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="card" id="card-show-article-comment">
+                        <div class="card-body">
+                            <p class="card-title"><strong>{{ comment.user_pseudo }}</strong></p>
+                            <p class="card-text">{{ comment.comment_content }}</p>
+                        </div>
+                        <div class="card-footer"><small class="text-muted">{{ comment.comment_date | date("d/m/Y H:i")}}</small></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <form method='POST'>
+                <input type="hidden" name="_csrf_token" id="_csrf_token" value={{ session.token }} />
+                <div class="card">
+                    <h3 class="card-header" id="title-enter-comment">Entrer votre commentaire</h3>
+                    <div class="card-body">
+                        <textarea type="text" class="card-text form-control" rows="4" id="content" name="content"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit" id="show-article-button">Ajouter le commentaire</button>
+            </form>
+            
+
+        </div>
+    </section>
+{% endblock %}

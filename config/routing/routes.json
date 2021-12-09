@@ -1,0 +1,88 @@
+[
+    {
+      "name": "homepage",
+      "path": "/",
+      "_controller": "App\\Controllers\\DefaultController",
+      "_method": "homepage",
+      "_methods": ["GET"]
+    },
+    {
+      "name": "connexion",
+      "path": "/se-connecter",
+      "_controller": "App\\Controllers\\SecurityController",
+      "_method": "login",
+      "_methods": ["GET", "POST"]
+    },
+    {
+      "name": "logout",
+      "path": "/se-deconnecter",
+      "_controller": "App\\Controllers\\SecurityController",
+      "_method": "logout",
+      "_methods": ["GET", "POST"]
+    },
+    {
+      "name": "registration",
+      "path": "/inscription",
+      "_controller": "App\\Controllers\\SecurityController",
+      "_method": "registration",
+      "_methods": ["GET", "POST"]
+    },
+    {
+      "name": "index_admin",
+      "path": "/admin",
+      "_controller": "App\\Controllers\\AdminController",
+      "_method": "indexAdmin",
+      "_methods": ["GET", "POST"]
+    },
+    {
+      "name": "edit_article",
+      "path": "/articles/{id}/edit",
+      "_controller": "App\\Controllers\\AdminController",
+      "_method": "editArticle",
+      "_methods": ["GET","POST"]
+    },
+    {
+      "name": "list_articles",
+      "path": "/articles",
+      "_controller": "App\\Controllers\\ArticleController",
+      "_method": "listArticles",
+      "_methods": ["GET","POST"]
+    },
+    {
+      "name": "show_articles",
+      "path": "/articles/{id}/show",
+      "_controller": "App\\Controllers\\ArticleController",
+      "_method": "show",
+      "_methods": ["GET","POST"]
+    },
+    {
+    "name": "add_articles",
+    "path": "/add-article",
+    "_controller": "App\\Controllers\\AdminController",
+    "_method": "createArticle",
+    "_methods": ["GET","POST"]
+    },
+    {
+      "name": "delete_articles",
+      "path": "/articles/{id}/delete",
+      "_controller": "App\\Controllers\\AdminController",
+      "_method": "deleteArticle",
+      "_methods": ["GET","POST"]
+    },
+    {
+      "name": "delete_comments",
+      "path": "/comments/{id}/delete",
+      "_controller": "App\\Controllers\\AdminController", 
+      "_method": "deleteComment",
+      "_methods": ["GET","POST"]
+    },
+    {
+      "name": "validate_comments",
+      "path": "/comments/{id}/validate",
+      "_controller": "App\\Controllers\\AdminController", 
+      "_method": "validateComment",
+      "_methods": ["GET","POST"]
+    }
+
+  ]
+  

@@ -1,0 +1,28 @@
+{% macro input(name, label, value = null, options = []) %}
+    <div class="form-group {{ options.class }}">
+        <label for="{{ name }}" class="form-label">{{ label }}</label>
+        <input type="{{ options.type ?: 'text' }}" class="form-control" id="{{ name }}" name="{{ name }}" value="{{ value }}">
+    </div>
+{% endmacro %}
+
+{% macro inputPassword(name, label) %}
+    <div class="form-group">
+        <label for="{{ name }}" class="form-label">{{ label }}</label>
+        <div class="row">
+            <div class="col-lg-10 col-md-9 col-8">
+                <input type="{{ name }}" class="form-control" id="{{ name }}" name="{{ name }}">
+            </div>
+            <div class="col-lg col-md-3 col-4">
+                <button type="button" class="btn btn-primary" id="showpassword">Show</button>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+
+{% macro textarea(name, label) %}
+    <div class="form-group">
+        <label for="{{ name }}" class="form-label">{{ label }}</label>
+        <textarea class="form-control" id="{{ name }}" name="{{ name }}" value="{{ name }}"></textarea>
+    </div>
+{% endmacro %}

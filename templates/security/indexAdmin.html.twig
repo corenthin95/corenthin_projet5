@@ -1,0 +1,78 @@
+{% extends "base.html.twig" %}
+
+{% block head %}
+    <title>Admin Page</title>
+{% endblock %}
+
+{% block content %}
+    <section id="admin-page">
+        <div class="container">
+
+            <div>
+                <a href="/add-article" class="btn btn-secondary" role="button">Add an article</a>
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td><strong>Title Articles</strong></td>
+                        <td>Actions</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for article in articles %}
+                    <tr>
+                        <td class="col-6">{{ article.title }}</td>
+                        <td class="col-6">
+                            <a href={{ "/articles/"~article.id~"/edit" }} class="btn btn-primary">Edit</a>
+                            <a href={{ "/articles/"~article.id~"/delete" }} class="btn btn-danger" type="submit">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td><strong>Title Comments</strong></td>
+                        <td>Actions</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for comment in comments %}
+                    <tr>
+                        <td class="col-6">{{ comment.content | u.truncate(50, '...', false)}}</td>
+                        <td class="col-6">
+                        {% if comment.is_valid == '0' %}
+                            <a href={{ "/comments/"~comment.id~"/validate" }} class="btn btn-primary">Validate</a>
+                        {% endif %}
+                            <a href={{ "/comments/"~comment.id~"/delete"}} class="btn btn-danger" type="submit">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {# {% for article in articles %}
+
+            
+                <div>
+                    <h5>{{ article.title }}</h5>
+                    <h6>{{ article.lead_paragraph }}</h6>
+                </div>
+                <div>
+                    <a href ={{ "/articles/"~article.id~"/edit" }} class="btn btn-primary" role="button">Edit</a>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            {% endfor %}
+            {% for comment in comments %}
+                <div>
+                    <h5>{{ comment.content }}</h5>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-success">Validate</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            {% endfor %} #}
+        </div>
+    </section>
+{% endblock %}

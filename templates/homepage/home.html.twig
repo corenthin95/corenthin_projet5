@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    <title>Blog Professionnel - Accueil</title>
+{% endblock %}
+
+{% import 'form.html.twig' as form %}
+
+{% block content %}
+
+    <!-- Introduction -->
+    <section id="introduction">
+        <div class="container">
+            <div class="row">
+                <h1>Bienvenue <br><span>sur mon Blog professionnel<span></h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non congue leo, in molestie dui. Nunc sit amet urna sit amet est luctus accumsan id id turpis. In hac habitasse platea dictumst. Donec dolor eros, cursus eget ante eu, facilisis ullamcorper tortor. Morbi orci nibh, semper malesuada ligula in, pretium varius est.
+                </p>
+            </div>
+            <div class="row" id="articles-row">
+                <p id="infos-articles">Retrouvez les articles via ce lien</p>
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#global_modal" id="articles-button">
+                    <a href="/articles">Page des articles</a>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Presentation -->
+    <section id="presentation">
+        <div class="container-fluid">
+            <div class="row">
+                <h2 id="section-name-presentation">Présentation</h2>
+            </div>
+            <div class="row" id="presentation-row">
+                <div class="col-lg-3 col-md-3 col-4" id="profile-pic">
+                    <img src="img/anonym.jpg" alt="profile picture">
+                </div>
+                <div class="col-lg-3 col-md-3 col-6" id="name-presentation">
+                    <p id="title-name">Corenthin <br>FLAMAND<p>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <p id="description-presentation">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non congue leo, in molestie dui. Nunc sit amet urna sit amet est luctus accumsan id id turpis. In hac habitasse platea dictumst. Donec dolor eros, cursus eget ante eu, facilisis ullamcorper tortor.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <p id="cv-download">Vous pouvez retrouver mon CV<br><span>en cliquant sur le bouton juste en dessous</span></p>
+            </div>
+            <div class="row" id="cv-row">
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#global_modal" id="cv-button">
+                    <a download="CVCorenthinFlamand" href="img/pdf/CV_corenthin_flamand.pdf">Download</a>
+                </button>
+            </div>  
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <h2 id="section-name-contact">Contact</h2>
+            </div>
+            <form class="row" id="contact-form" method="post">
+                <input type="hidden" name="_csrf_token" id="_csrf_token" value={{ session.token }} />
+                {{ form.input('name', 'Nom / Prénom', name) }}
+                {{ form.input('email', 'E-mail', email, {type: 'email'}) }}
+                {{ form.textarea('message', 'Message') }}
+                <div id="contact-button-row">
+                    <button type="submit" class="btn btn-primary" id="contact-button">Envoyer</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+{% endblock %}
+
+{% block footer %}
+        
+{% endblock %}
