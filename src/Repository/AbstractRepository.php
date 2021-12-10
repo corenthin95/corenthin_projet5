@@ -10,11 +10,14 @@ abstract class AbstractRepository
 
     public function __construct()
     {
+        $configDatabase = require(__DIR__.'/../../config/database/config_database.php');
+        $dsn = sprintf('mysql:host=%s;dbname=%s;charset=utf8', $configDatabase['host'], $configDatabase['dbname']);
+       
         try {
             $this->database = new PDODatabase(
-                'mysql:host=127.0.0.1;dbname=corenthin_projet5;charset=utf8',
-                'root',
-                ''
+                $dsn,
+                $configDatabase['username'],
+                $configDatabase['password']
             );
         } catch (\Exception $e) {
             var_dump($e);
