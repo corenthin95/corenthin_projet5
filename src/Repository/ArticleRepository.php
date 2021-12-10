@@ -17,20 +17,7 @@ class ArticleRepository extends AbstractRepository
     public function findById(int $id)
     {
         $pdoStatement = $this->database->request("SELECT * FROM {$this->getTableName()} WHERE id = :id", [':id' => $id]);
-        // $pdoStatement = $this->database->request(
-
-        //     "SELECT a.id AS article_id,
-        //     a.title AS article_title,
-        //     a.lead_paragraph AS article_lead_paragraph,
-        //     a.content AS article_content,
-        //     c.id AS comment_id,
-        //     c.user_id AS comment_user_id,
-        //     c.content AS comment_content
-        //     FROM {$this->getTableName()} AS a WHERE a.id = :id
-        //     INNER JOIN comment AS c ON a.id = c.id", [':id' => $id]
-
-        // );
-
+        
         return $pdoStatement->fetch();
     }
 

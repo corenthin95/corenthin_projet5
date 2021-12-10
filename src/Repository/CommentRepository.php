@@ -47,7 +47,6 @@ class CommentRepository extends AbstractRepository
                 ':article_id' => $articleId,
                 ':content' => $dataSubmitted['content'],
                 ':is_valid' => false,
-                // ':date' => (new DateTime())->format('Y-m-d h-i-s')
             ]
         );
     }

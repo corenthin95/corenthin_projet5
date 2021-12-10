@@ -24,7 +24,6 @@ class ArticleController extends AbstractController
 
     public function listArticles(ServerRequestInterface $request, ParametersBag $bag)
     {
-        // if (!$_SESSION['user']['isAdmin']);
         $listArticles = $this->articleRepository->findAll();
 
         return $this->renderHtml(
@@ -68,19 +67,4 @@ class ArticleController extends AbstractController
             ]
         );
     }
-
-    // public function edit(ServerRequestInterface $request, ParametersBag $bag)
-    // {
-    //     $article = $this->articleRepository->findById($bag->getParameter('id')->getValue());
-    //     if (!$article) {
-    //         throw new ResourceNotFoundException('Article non existant');
-    //     }
-
-    //     return $this->renderHtml(
-    //         'articles/editArticles.html.twig',
-    //         [
-    //             'article' => $article
-    //         ]
-    //     );
-    // }
 }
